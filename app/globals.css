@@ -14,3 +14,76 @@
   --orange-light: #ff7666;
   --white: #ffffff;
 }
+
+.main {
+  background-color: var(--background-grey);
+}
+
+.txt_orange {
+  color: var(--orange);
+  font-weight: 600;
+}
+
+.txt_black {
+  color: var(--txt-black);
+}
+
+.txt_white {
+  color: var(--white);
+}
+
+/* Main */
+/*  */
+.main_white {
+  background-color: var(--white);
+}
+
+.main_exch {
+  border-radius: 16px;
+  box-shadow: 0 10px 20px #14127605;
+  padding: 32px;
+}
+
+.main_h2 {
+  font-size: 1.867rem;
+  line-height: 44px;
+  color: var(--txt-black2);
+  font-weight: 900;
+}
+
+.main_h3 {
+  color: var(--txt-black2);
+  font-weight: 100;
+  font-size: 0.933rem;
+  line-height: 20px;
+}
+
+.main_prices {
+  color: var(--txt-black2);
+  font-weight: 500;
+}
+
+.main_grid {
+  margin-top: 32px;
+}
+
+/* Navbar */
+/*  */
+.nav_text {
+  display: flex;
+  line-height: 40px;
+  text-align: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+.personal_cab {
+  width: 190px;
+  height: 40px;
+  background-color: var(--orange);
+  border-radius: 8px;
+}
+
+.personal_cab:hover {
+  background-color: #ff3d27;
+}
