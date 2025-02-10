@@ -12,7 +12,8 @@ const Main = () => {
           </div>
         </div>
       </div>
-      <div className="main_white main_exch w-5/12">
+      <div className="main_white main_exch w-2/5 ml-6">
+      <h2 className="calc_h2 mb-10">კალკულატორი</h2>
         <Calculator />
       </div>
     </div>
