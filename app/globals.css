@@ -138,3 +138,17 @@
 .select_text {
   font-weight: 600;
 }
+
+.calc_toggle {
+  transition: transform 0.2s;
+}
+
+.calc_toggle:hover {
+  transform: scale(1.05);
+}
+
+.calc_span {
+  color: var(--txt-black2);
+  line-height: 18px;
+  font-weight: 600;
+}

@@ -1,3 +1,8 @@
+import Image from "next/image";
+
+import toggle from "../../public/icons/toggle.svg";
+import info from "../../public/icons/info.svg";
+
 const Calculator = () => {
   return (
     <>
@@ -87,6 +92,12 @@ const Calculator = () => {
         </div>
       </div>
 
+      <div className="flex justify-center my-4">
+        <button className="calc_toggle">
+          <Image src={toggle} alt="toggle" />
+        </button>
+      </div>
+
       <p className="calc_p">მსურს ვიყიდო</p>
       <div className="w-full flex calc_div justify-between">
         <input className="calc_input w-full" type="text" placeholder="0.00" />
@@ -170,6 +181,19 @@ const Calculator = () => {
               10 ზლოტი
             </option>
           </select>
+        </div>
+      </div>
+      <div className="mt-6">
+        <span className="calc_span">1 GEL = 0.3559 USD</span>
+        <div className="flex mt-6">
+          <Image src={info} alt="info" />
+          <div>
+            <p className="calc_p">
+              გაითვალისწინეთ, გაცვლითი კურსი ფილიალის მიხედვით შესაძლებელია
+              განსხვავდებოდეს. ინფორმაციის მისაღებად, მიმართეთ თქვენთვის
+              სასურველ ფილიალს.
+            </p>
+          </div>
         </div>
       </div>
     </>
