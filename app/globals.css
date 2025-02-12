@@ -9,6 +9,7 @@
   --calc-grey: #f1f3f8;
   --background-grey: #f6f8fc;
   --background-grey2: #f1f3f8;
+  --background-sidebar: #252526;
   --up-green: #1ad04d;
   --down-red: #fe103b;
   --orange: #ff5440;
@@ -151,4 +152,26 @@
   color: var(--txt-black2);
   line-height: 18px;
   font-weight: 600;
+}
+
+/* Sidebar  */
+/*  */
+.sidebar {
+  background-color: var(--background-sidebar);
+  border-radius: 16px;
+  box-shadow: 0 20px 25px #1412760f;
+  left: 8px;
+  padding: 16px 10px;
+  position: fixed;
+  top: 50%;
+  z-index: 9;
+}
+
+.sidebar_el {
+  height: 36px;
+  width: 36px;
+}
+
+.sidebar_el:last-child {
+  height: 16px;
 }
