@@ -13,7 +13,7 @@ const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} h-screen`}>
+      <body className={`${inter.className}`}>
         <Navbar />
         <Sidebar />
         {children}
