@@ -176,6 +176,18 @@
   height: 16px;
 }
 
+/* Footer  */
+/*  */
+.footer_p {
+  font-size: 0.933rem;
+  line-height: 20px;
+  color: var(--txt-grey);
+  font-weight: 500;
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+
 /* not-found  */
 /*  */
 .main_not-found{
@@ -266,11 +278,6 @@
     from { transform: translateX(0px); }
     to { transform: translateX(100px); }
 }
-
-/* @keyframes cloudFloat {
-  0% { transform: translateX(0) translateY(3px); }
-  100% { transform: translateX(1000px) translateY(0); }
-} */
 
 @keyframes cloud001 {
   0% { transform: translateX(-1000px) translateY(3px); }
