@@ -14,6 +14,16 @@ const Navbar = () => {
             <Image src={diamond} alt="diamond" />
           </Link>
         </div>
+        <div className="nav_text_black">
+          <Link href="/" className="flex">
+            მთავარი
+          </Link>
+        </div>
+        <div className="nav_text_black">
+          <Link href="/contact" className="flex">
+            კონტაქტები
+          </Link>
+        </div>
         <div>
           <Link href="/" className="flex">
             <Image src={search} alt="search" className="mt-3" />

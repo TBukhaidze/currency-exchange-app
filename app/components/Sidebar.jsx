@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import location from "../../public/icons/location.svg";
+import contact from "../../public/icons/contact.svg";
 import dolar from "../../public/icons/dolar.svg";
 import home from "../../public/icons/home.svg";
 import Link from "next/link";
@@ -19,8 +19,8 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className="flex justify-center mb-4 sidebar_el">
-        <Link href="/">
-          <Image src={location} alt="location" />
+        <Link href="/contact">
+          <Image src={contact} alt="contact" />
         </Link>
       </div>
     </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import everest from "../../public/img/everest.jpg";
+import clouds from "../../public/img/clouds.jpg";
 import temo from "../../public/img/temo.jpg";
 import archil from "../../public/img/archil.jpg";
 
@@ -34,38 +35,36 @@ const Contact = () => {
               <h2 className="font-semibold">Temuri Bukhaidze</h2>
               <p className="text-gray-500">Front end developer</p>
             </div>
-            <ul className="py-4 mt-2 text-gray-700 flex items-center justify-center gap-5">
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link
-                  href="https://www.facebook.com/buxa.buxa.7/"
-                  target="_blank"
-                >
-                  <Image src={fb} alt="fbIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-between">
-                <Link href="https://github.com/TBukhaidze" target="_blank">
-                  <Image src={gitHub} alt="githubIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link
-                  href="https://www.linkedin.com/in/temuri-bukhaidze-83728633a/"
-                  target="_blank"
-                >
-                  <Image src={linkedIn} alt="linkedInIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link href="https://t.me/temobu" target="_blank">
-                  <Image src={telegram} alt="telegramIcon" />
-                </Link>
-              </li>
-            </ul>
             <div className="p-4 border-t mx-8 mt-2">
-              <button className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-white px-6 py-2">
-                Follow
-              </button>
+              <p className=" text-center text-gray-600">Contacts</p>
+              <ul className="py-4 mt-2 text-gray-700 flex items-center justify-center gap-5">
+                <li className="flex flex-col items-center justify-center gap-5 contacts_svg">
+                  <Link
+                    href="https://www.facebook.com/buxa.buxa.7/"
+                    target="_blank"
+                  >
+                    <Image src={fb} alt="fbIcon" />
+                  </Link>
+                </li>
+                <li className="flex flex-col items-center justify-between contacts_svg">
+                  <Link href="https://github.com/TBukhaidze" target="_blank">
+                    <Image src={gitHub} alt="githubIcon" />
+                  </Link>
+                </li>
+                <li className="flex flex-col items-center justify-center gap-5 contacts_svg">
+                  <Link
+                    href="https://www.linkedin.com/in/temuri-bukhaidze-83728633a/"
+                    target="_blank"
+                  >
+                    <Image src={linkedIn} alt="linkedInIcon" />
+                  </Link>
+                </li>
+                <li className="flex flex-col items-center justify-center gap-5 contacts_svg">
+                  <Link href="https://t.me/temobu" target="_blank">
+                    <Image src={telegram} alt="telegramIcon" />
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -74,7 +73,7 @@ const Contact = () => {
             <div className="rounded-t-lg h-32 overflow-hidden">
               <Image
                 className="object-cover object-top w-full"
-                src={everest}
+                src={clouds}
                 alt="Mountain"
               />
             </div>
@@ -89,35 +88,32 @@ const Contact = () => {
               <h2 className="font-semibold">Archil Gelenidze</h2>
               <p className="text-gray-500">Back end developer</p>
             </div>
-            <ul className="py-4 mt-2 text-gray-700 flex items-center justify-center gap-5">
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link
-                  href="https://www.facebook.com/buxa.buxa.7/"
-                  target="_blank"
-                >
-                  <Image src={fb} alt="fbIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-between">
-                <Link href="https://github.com/TBukhaidze" target="_blank">
-                  <Image src={gitHub} alt="githubIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link
-                  href="https://www.linkedin.com/in/temuri-bukhaidze-83728633a/"
-                  target="_blank"
-                >
-                  <Image src={linkedIn} alt="linkedInIcon" />
-                </Link>
-              </li>
-              <li className="flex flex-col items-center justify-center gap-5">
-                <Link href="https://t.me/temobu" target="_blank">
-                  <Image src={telegram} alt="telegramIcon" />
-                </Link>
-              </li>
-            </ul>
-            <div className="p-4 border-t mx-8 mt-2"></div>
+            <div className="p-4 border-t mx-8 mt-2">
+              <p className=" text-center text-gray-600">Contacts</p>
+              <ul className="py-4 mt-2 text-gray-700 flex items-center justify-center gap-5">
+                <li className="flex flex-col items-center justify-center gap-5 contacts_svg">
+                  <Link
+                    href="https://www.facebook.com/profile.php?id=100072241922948"
+                    target="_blank"
+                  >
+                    <Image src={fb} alt="fbIcon" />
+                  </Link>
+                </li>
+                <li className="flex flex-col items-center justify-between contacts_svg">
+                  <Link
+                    href="https://github.com/ArchilGelenidze"
+                    target="_blank"
+                  >
+                    <Image src={gitHub} alt="githubIcon" />
+                  </Link>
+                </li>
+                <li className="flex flex-col items-center justify-center gap-5 contacts_svg">
+                  <Link href="https://t.me/Lucetam" target="_blank">
+                    <Image src={telegram} alt="telegramIcon" />
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
