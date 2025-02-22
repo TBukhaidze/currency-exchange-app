@@ -3,7 +3,7 @@ import Exchange from "./Exchange";
 
 const Main = () => {
   return (
-    <div className="flex  gap-3">
+    <div className="flex  gap-3 mb-8">
       <div className="main_white main_exch w-7/12">
         <h2 className="main_h2 mb-10">ვალუტის კურსები</h2>
         <div className="flex justify-between text-center">
