@@ -90,7 +90,7 @@ const Contact = () => {
               <p className="text-gray-500">Back end developer</p>
             </div>
             <ul className="py-4 mt-2 text-gray-700 flex items-center justify-center gap-5">
-            <li className="flex flex-col items-center justify-center gap-5">
+              <li className="flex flex-col items-center justify-center gap-5">
                 <Link
                   href="https://www.facebook.com/buxa.buxa.7/"
                   target="_blank"
@@ -117,11 +117,7 @@ const Contact = () => {
                 </Link>
               </li>
             </ul>
-            <div className="p-4 border-t mx-8 mt-2">
-              <button className="w-1/2 block mx-auto rounded-full bg-gray-900 hover:shadow-lg font-semibold text-white px-6 py-2">
-                Follow
-              </button>
-            </div>
+            <div className="p-4 border-t mx-8 mt-2"></div>
           </div>
         </div>
       </div>
