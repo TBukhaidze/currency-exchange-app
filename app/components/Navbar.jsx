@@ -20,8 +20,13 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="nav_text_black">
+          <Link href="/about" className="flex">
+            საიტის შესახებ
+          </Link>
+        </div>
+        <div className="nav_text_black">
           <Link href="/contact" className="flex">
-            კონტაქტები
+            კონტაქტი
           </Link>
         </div>
         <div>

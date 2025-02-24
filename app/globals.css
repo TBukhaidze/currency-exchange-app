@@ -17,6 +17,10 @@
   --white: #ffffff;
 }
 
+body{
+  min-height: 100vh;
+}
+
 .main {
   background-color: var(--background-grey);
 }
@@ -251,8 +255,6 @@
 }
 .st9 {
   fill: none;
-}
-.st10 {
 }
 
 #cloud1 {
