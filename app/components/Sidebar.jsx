@@ -14,7 +14,7 @@ const Sidebar = () => {
         </Link>
       </div>
       <div className="flex justify-center mb-4 sidebar_el">
-        <Link href="/">
+        <Link href="/exchange">
           <Image src={dolar} alt="dolar" />
         </Link>
       </div>

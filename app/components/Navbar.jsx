@@ -20,8 +20,8 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="nav_text_black">
-          <Link href="/about" className="flex">
-            საიტის შესახებ
+          <Link href="/exchange" className="flex">
+            ვალუტის კურსები
           </Link>
         </div>
         <div className="nav_text_black">

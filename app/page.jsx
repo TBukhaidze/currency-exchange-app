@@ -1,11 +1,9 @@
-import Main from "./components/Main";
+import AboutPage from "./components/AboutPage";
 
 export default function Home() {
   return (
-    <main className="main flex flex-col sm:flex-row ">
-      <div className="w-8/12 mx-auto pt-8">
-        <Main />
-      </div>
+    <main>
+      <AboutPage />
     </main>
   );
 }
