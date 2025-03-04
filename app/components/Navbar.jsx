@@ -10,7 +10,7 @@ const Navbar = () => {
       <div className="flex justify-between text-base md:text-3xl">
         <div className="txt_orange">
           <Link href="/" className="flex">
-            ალმასი
+            Diamond
             <Image src={diamond} alt="diamond" />
           </Link>
         </div>

@@ -45,8 +45,8 @@ const AboutPage = () => {
           </div>
         </div>
         <div className="p-4 border-t mx-8 " />
-        <div className="w-full flex justify-center my-2 gap-5">
-          <div className="relative inline-flex  group">
+        <div className="w-full flex justify-center my-2 gap-10">
+          {/* <div className="relative inline-flex  group">
             <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
             <Link
               href="/exchange"
@@ -67,7 +67,7 @@ const AboutPage = () => {
             >
               დაკავშირება
             </Link>
-          </div>
+          </div> */}
           <Link
             href="/exchange"
             className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
