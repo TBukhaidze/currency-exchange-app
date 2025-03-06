@@ -95,6 +95,13 @@ body{
   line-height: 20px;
 }
 
+.main_time {
+  font-size: 0.900rem;
+  line-height: 44px;
+  color: var(--txt-grey);
+  font-weight: 500;
+}
+
 .main_prices {
   color: var(--txt-black2);
   font-weight: 500;

@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+const year = new Date().getFullYear();
+
 const Footer = () => {
   return (
     <footer className="bg-white">
@@ -47,7 +49,7 @@ const Footer = () => {
           </div>
         </nav>
         <p className="mt-8 text-base leading-6 text-center text-gray-400">
-          © 2025 Diamond, Inc. All rights reserved.
+          © {year} Diamond, Inc. All rights reserved.
         </p>
       </div>
     </footer>
