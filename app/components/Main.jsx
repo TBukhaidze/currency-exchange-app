@@ -5,6 +5,8 @@ import { useState, useEffect } from "react";
 import Calculator from "./Calculator";
 import Exchange from "./Exchange";
 
+import Spinner from "./spinner";
+
 const Main = () => {
   const [currentTime, setCurrentTime] = useState("");
 
@@ -26,7 +28,7 @@ const Main = () => {
         <div className="flex justify-between  mb-10">
           <h2 className="main_h2">ვალუტის კურსები</h2>
           {currentTime == "" ? (
-            <p className="main_time">Loading</p>
+            <Spinner />
           ) : (
             <p className="main_time">{currentTime}</p>
           )}
