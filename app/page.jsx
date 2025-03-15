@@ -1,9 +1,11 @@
-import AboutPage from "./components/AboutPage";
+import Main from "./components/Main";
+import SwiperSCarousel from "./components/SwiperCarousel";
 
 export default function Home() {
   return (
     <main>
-      <AboutPage />
+      <SwiperSCarousel />
+      <Main />
     </main>
   );
 }
