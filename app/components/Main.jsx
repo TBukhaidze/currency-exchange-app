@@ -5,7 +5,7 @@ import team from "../../public/img/team.png";
 
 const Main = () => {
   return (
-    <div className="main pb-8">
+    <div className="main py-8">
       <div className="w-8/12 mx-auto mb-7">
         <div className="text-center pt-5">
           <span className="text-black-500 border-b-2 border-indigo-600 text-3xl">

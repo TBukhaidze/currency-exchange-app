@@ -12,6 +12,7 @@ import btc from "../../public/img/btc.jpg";
 import bitcoin from "../../public/img/bitcoin.jpg";
 
 import Image from "next/image";
+import Link from "next/link";
 
 const SwiperCarousel = () => {
   return (
@@ -37,24 +38,26 @@ const SwiperCarousel = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
-            <h2 className="text-2xl font-bold mb-4">
-              Обменяйте валюту быстро и выгодно
-            </h2>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Перейти к обмену
-            </button>
+            <h2 className="text-2xl font-bold mb-4">ვალუტის საუკეთესო კურსი</h2>
+            <Link
+              href="/exchange"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+            >
+              ვალუტის კურსები
+            </Link>
           </div>
         </SwiperSlide>
 
         <SwiperSlide className="relative">
           <Image src={gas} alt="gas" className="w-full h-full object-cover" />
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
-            <h2 className="text-2xl font-bold mb-4">
-              Лучшие курсы валют на рынке
-            </h2>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Узнать подробнее
-            </button>
+            <h2 className="text-2xl font-bold mb-4">ბენზინის საუკეთესო ფასი</h2>
+            <Link
+              href="/exchange"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+            >
+              ბენზინის ფასები
+            </Link>
           </div>
         </SwiperSlide>
 
@@ -65,12 +68,13 @@ const SwiperCarousel = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
-            <h2 className="text-2xl font-bold mb-4">
-              Моментальный обмен криптовалют
-            </h2>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Начать обмен
-            </button>
+            <h2 className="text-2xl font-bold mb-4">კრიპტოვალუტის კურსი</h2>
+            <Link
+              href="/exchange"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+            >
+              კრიპტოს კურსები
+            </Link>
           </div>
         </SwiperSlide>
 
@@ -81,12 +85,13 @@ const SwiperCarousel = () => {
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
-            <h2 className="text-2xl font-bold mb-4">
-              Моментальный обмен криптовалют
-            </h2>
-            <button className="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition">
-              Начать обмен
-            </button>
+            <h2 className="text-2xl font-bold mb-4">კრიპტოვალუტის კურსი</h2>
+            <Link
+              href="/exchange"
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+            >
+              კრიპტოს კურსები
+            </Link>
           </div>
         </SwiperSlide>
       </Swiper>
