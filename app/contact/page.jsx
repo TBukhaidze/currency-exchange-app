@@ -10,6 +10,7 @@ import fb from "../../public/icons/fb.svg";
 import linkedIn from "../../public/icons/linkedIn.svg";
 import gitHub from "../../public/icons/gitHub.svg";
 import telegram from "../../public/icons/telegram.svg";
+import CryptoList from "../components/CryptoList";
 
 const ContactPage = () => {
   return (
@@ -119,6 +120,7 @@ const ContactPage = () => {
         </div>
       </div>
       <div className="p-4 border-t mx-8 " />
+      <CryptoList />
     </div>
   );
 };
