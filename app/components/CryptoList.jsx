@@ -7,14 +7,24 @@ import Image from "next/image";
 
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
+import Spinner from "./Spinner";
+import { getCurrentTime } from "../utils/getCurrentTime";
 
 export default function CryptoList() {
   const [coins, setCoins] = useState([]);
+  const [currentTime, setCurrentTime] = useState("");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(`${getCurrentTime()}`);
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const loadData = async () => {
       const data = await fetchCryptoPrices();
-      console.log(data);
       setCoins(data);
     };
 
@@ -26,9 +36,22 @@ export default function CryptoList() {
 
   let num = 1;
 
+  function formatNumberIntl(number) {
+    const formatter = new Intl.NumberFormat("en-US");
+    return formatter.format(number);
+  }
+
   return (
     <div className="w-8/12 mx-auto pt-8 ">
       <div className="main_white main_exch">
+        <div className="flex justify-between  mb-10">
+          <h2 className="main_h2">კრიპტოვალუტის კურსები</h2>
+          {currentTime == "" ? (
+            <Spinner />
+          ) : (
+            <p className="main_time pr-7">{currentTime}</p>
+          )}
+        </div>
         <div className="flex justify-between text-center pb-5">
           <div className="w-full grid grid-cols-5 gap-8">
             <div className="text-left col-span-2">
@@ -75,7 +98,9 @@ export default function CryptoList() {
                     </span>
                     {coin.market_cap_change_percentage_24h.toFixed(2)}%
                   </div>
-                  <div className="my-auto main_prices">${coin.market_cap}</div>
+                  <div className="my-auto main_prices">
+                    ${formatNumberIntl(coin.market_cap)}
+                  </div>
                 </div>
               </div>
               <div className="p-4 border-t mx-8" />
