@@ -21,7 +21,12 @@ const Navbar = () => {
         </div>
         <div className="nav_text_black">
           <Link href="/exchange" className="flex">
-            ვალუტის კურსები
+            ვალუტა
+          </Link>
+        </div>
+        <div className="nav_text_black">
+          <Link href="/crypto" className="flex">
+            კრიპტოვალა
           </Link>
         </div>
         <div className="nav_text_black">

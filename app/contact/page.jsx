@@ -10,12 +10,12 @@ import fb from "../../public/icons/fb.svg";
 import linkedIn from "../../public/icons/linkedIn.svg";
 import gitHub from "../../public/icons/gitHub.svg";
 import telegram from "../../public/icons/telegram.svg";
-import CryptoList from "../components/CryptoList";
 
 const ContactPage = () => {
   return (
     <div className="main pb-8">
       <h2 className="main_h2 text-center pt-5">Developers</h2>
+      <div className="p-4 border-t mx-8 " />
       <div className="w-8/12 mx-auto mb-7 flex">
         <div className="w-1/2">
           <div className="max-w-2xl mx-4 sm:max-w-sm md:max-w-sm lg:max-w-sm xl:max-w-sm sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto mt-16 bg-white shadow-xl rounded-lg text-gray-900">
@@ -120,7 +120,6 @@ const ContactPage = () => {
         </div>
       </div>
       <div className="p-4 border-t mx-8 " />
-      <CryptoList />
     </div>
   );
 };

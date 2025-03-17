@@ -70,7 +70,7 @@ const SwiperCarousel = () => {
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
             <h2 className="text-2xl font-bold mb-4">კრიპტოვალუტის კურსი</h2>
             <Link
-              href="/exchange"
+              href="/crypto"
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
               კრიპტოს კურსები
@@ -87,7 +87,7 @@ const SwiperCarousel = () => {
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-white text-center p-4">
             <h2 className="text-2xl font-bold mb-4">კრიპტოვალუტის კურსი</h2>
             <Link
-              href="/exchange"
+              href="/crypto"
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
             >
               კრიპტოს კურსები

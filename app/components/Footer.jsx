@@ -33,6 +33,14 @@ const Footer = () => {
           </div>
           <div className="px-5 py-2">
             <Link
+              href="/crypto"
+              className="text-base leading-6 text-gray-500 hover:text-gray-900"
+            >
+              Crypto
+            </Link>
+          </div>
+          <div className="px-5 py-2">
+            <Link
               href="/contact"
               className="text-base leading-6 text-gray-500 hover:text-gray-900"
             >
