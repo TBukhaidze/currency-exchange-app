@@ -8,17 +8,18 @@ import Image from "next/image";
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
 import Spinner from "./Spinner";
+
 import { getCurrentTime } from "../utils/getCurrentTime";
 
 export default function CryptoList() {
   const [coins, setCoins] = useState([]);
   const [currentTime, setCurrentTime] = useState("");
+  const [secondsLeft, setSecondsLeft] = useState(60);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(`${getCurrentTime()}`);
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -30,8 +31,20 @@ export default function CryptoList() {
 
     loadData();
 
-    const interval = setInterval(loadData, 60000);
-    return () => clearInterval(interval);
+    const refreshInterval = setInterval(() => {
+      loadData();
+      setSecondsLeft(60);
+    }, 60000);
+
+    return () => clearInterval(refreshInterval);
+  }, []);
+
+  useEffect(() => {
+    const countdown = setInterval(() => {
+      setSecondsLeft((prev) => (prev > 0 ? prev - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(countdown);
   }, []);
 
   let num = 1;
@@ -42,14 +55,19 @@ export default function CryptoList() {
   }
 
   return (
-    <div className="w-8/12 mx-auto pt-8 ">
+    <div className="w-8/12 mx-auto pt-8">
       <div className="main_white main_exch">
-        <div className="flex justify-between  mb-10">
+        <div className="flex justify-between mb-10">
           <h2 className="main_h2">კრიპტოვალუტის კურსები</h2>
-          {currentTime == "" ? (
+          {currentTime === "" ? (
             <Spinner />
           ) : (
-            <p className="main_time pr-7">{currentTime}</p>
+            <>
+              <p className="main_time ">
+                ინფორმაცია განახლდება {secondsLeft} წამში
+              </p>
+              <p className="main_time pr-7">{currentTime}</p>
+            </>
           )}
         </div>
         <div className="flex justify-between text-center pb-5">
@@ -90,7 +108,7 @@ export default function CryptoList() {
                     </div>
                   </div>
                   <div className="flex justify-center my-auto main_prices">
-                    <span>{coin.current_price}</span>
+                    <span>${coin.current_price}</span>
                   </div>
                   <div className="my-auto main_prices flex justify-center">
                     <span className="my-auto px-3">
