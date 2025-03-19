@@ -45,33 +45,17 @@ const Main = () => {
         </div>
         <div className="p-4 border-t mx-8 " />
         <div className="w-full flex justify-center my-2 gap-10">
-          {/* <div className="relative inline-flex  group">
-            <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-            <Link
-              href="/exchange"
-              title="Get quote now"
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              ვალუტის კურსები
-            </Link>
-          </div>
-          <div className="relative inline-flex  group">
-            <div className="absolute transitiona-all duration-1000 opacity-70 -inset-px bg-gradient-to-r from-[#44BCFF] via-[#FF44EC] to-[#FF675E] rounded-xl blur-lg group-hover:opacity-100 group-hover:-inset-1 group-hover:duration-200 animate-tilt"></div>
-            <Link
-              href="/contact"
-              title="Get quote now"
-              className="relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-200 bg-gray-900 font-pj rounded-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
-              role="button"
-            >
-              დაკავშირება
-            </Link>
-          </div> */}
           <Link
             href="/exchange"
             className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
           >
             ვალუტის კურსები
+          </Link>
+          <Link
+            href="/crypto"
+            className="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-transform transform-gpu hover:-translate-y-1 hover:shadow-lg"
+          >
+            კრიპტოვალუტის კურსები
           </Link>
           <Link
             href="/contact"
