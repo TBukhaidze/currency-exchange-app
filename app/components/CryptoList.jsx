@@ -86,45 +86,51 @@ export default function CryptoList() {
             </div>
           </div>
         </div>
-        {coins.map((coin) => {
-          const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
+        {coins.length ? (
+          coins.map((coin) => {
+            const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
 
-          return (
-            <div key={coin.id}>
-              <div className="flex justify-between text-center my-3">
-                <div className="w-full grid grid-cols-5 gap-8">
-                  <div className="text-left col-span-2">
-                    <div className="flex gap-8 main_prices">
-                      {num++}
-                      <Image
-                        src={coin.image}
-                        alt={coin.name}
-                        width="24"
-                        height="24"
-                      />
-                      <p className="my-auto">
-                        {coin.name} ({coin.symbol.toUpperCase()})
-                      </p>
+            return (
+              <div key={coin.id}>
+                <div className="flex justify-between text-center my-3">
+                  <div className="w-full grid grid-cols-5 gap-8">
+                    <div className="text-left col-span-2">
+                      <div className="flex gap-8 main_prices">
+                        {num++}
+                        <Image
+                          src={coin.image}
+                          alt={coin.name}
+                          width="24"
+                          height="24"
+                        />
+                        <p className="my-auto">
+                          {coin.name} ({coin.symbol.toUpperCase()})
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex justify-center my-auto main_prices">
+                      <span>${coin.current_price}</span>
+                    </div>
+                    <div className="my-auto main_prices flex justify-center">
+                      <span className="my-auto px-3">
+                        <Image src={icon} alt="change" />
+                      </span>
+                      {coin.market_cap_change_percentage_24h.toFixed(2)}%
+                    </div>
+                    <div className="my-auto main_prices">
+                      ${formatNumberIntl(coin.market_cap)}
                     </div>
                   </div>
-                  <div className="flex justify-center my-auto main_prices">
-                    <span>${coin.current_price}</span>
-                  </div>
-                  <div className="my-auto main_prices flex justify-center">
-                    <span className="my-auto px-3">
-                      <Image src={icon} alt="change" />
-                    </span>
-                    {coin.market_cap_change_percentage_24h.toFixed(2)}%
-                  </div>
-                  <div className="my-auto main_prices">
-                    ${formatNumberIntl(coin.market_cap)}
-                  </div>
                 </div>
+                <div className="p-4 border-t mx-8" />
               </div>
-              <div className="p-4 border-t mx-8" />
-            </div>
-          );
-        })}
+            );
+          })
+        ) : (
+          <div className="h-60 flex justify-center">
+            <div className="loader" />
+          </div>
+        )}
       </div>
     </div>
   );
