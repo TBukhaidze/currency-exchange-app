@@ -1,15 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { fetchCryptoPrices } from "../features/api/cryptoApi";
-
 import Image from "next/image";
+
+import { fetchCryptoPrices } from "../features/api/cryptoApi";
+import { getCurrentTime } from "../utils/getCurrentTime";
 
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
 import Spinner from "./Spinner";
-
-import { getCurrentTime } from "../utils/getCurrentTime";
+import Link from "next/link";
 
 export default function CryptoList() {
   const [coins, setCoins] = useState([]);
@@ -46,8 +46,6 @@ export default function CryptoList() {
 
     return () => clearInterval(countdown);
   }, []);
-
-  let num = 1;
 
   function formatNumberIntl(number) {
     const formatter = new Intl.NumberFormat("en-US");
@@ -91,12 +89,12 @@ export default function CryptoList() {
             const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
 
             return (
-              <div key={coin.id}>
+              <Link key={coin.id} href="/crypto">
                 <div className="flex justify-between text-center my-3">
                   <div className="w-full grid grid-cols-5 gap-8">
                     <div className="text-left col-span-2">
                       <div className="flex gap-8 main_prices">
-                        {num++}
+                        {coin.market_cap_rank}
                         <Image
                           src={coin.image}
                           alt={coin.name}
@@ -123,7 +121,7 @@ export default function CryptoList() {
                   </div>
                 </div>
                 <div className="p-4 border-t mx-8" />
-              </div>
+              </Link>
             );
           })
         ) : (
