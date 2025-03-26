@@ -89,7 +89,7 @@ export default function CryptoList() {
             const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
 
             return (
-              <Link key={coin.id} href="/crypto">
+              <Link key={coin.id} href={`/crypto/${coin.name.toLowerCase()}`}>
                 <div className="flex justify-between text-center my-3">
                   <div className="w-full grid grid-cols-5 gap-8">
                     <div className="text-left col-span-2">
