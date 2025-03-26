@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { fetchCryptoPrices } from "../features/api/cryptoApi";
@@ -26,6 +26,7 @@ export default function CryptoList() {
   useEffect(() => {
     const loadData = async () => {
       const data = await fetchCryptoPrices();
+      console.log(data);
       setCoins(data);
     };
 
@@ -47,10 +48,10 @@ export default function CryptoList() {
     return () => clearInterval(countdown);
   }, []);
 
-  function formatNumberIntl(number) {
-    const formatter = new Intl.NumberFormat("en-US");
-    return formatter.format(number);
-  }
+  const formatNumberIntl = useCallback(
+    (number) => new Intl.NumberFormat("en-US").format(number),
+    []
+  );
 
   return (
     <div className="w-8/12 mx-auto pt-8">
@@ -89,7 +90,7 @@ export default function CryptoList() {
             const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
 
             return (
-              <Link key={coin.id} href={`/crypto/${coin.name.toLowerCase()}`}>
+              <Link key={coin.id} href={`/crypto/${coin.id.toLowerCase()}`}>
                 <div className="flex justify-between text-center my-3">
                   <div className="w-full grid grid-cols-5 gap-8">
                     <div className="text-left col-span-2">
