@@ -3,8 +3,9 @@
 import { useEffect, useState } from "react";
 
 import CryptoChart from "../../components/CryptoChar";
-import { fetchCryptoDetails } from "@/app/features/api/getSingleCrypto";
+
 import { useParams } from "next/navigation";
+import { fetchSingleCryptoDetails } from "@/app/features/api/getSingleCrypto";
 
 const SingleCrypto = () => {
   const [cryptoData, setCryptoData] = useState(null);
@@ -15,24 +16,60 @@ const SingleCrypto = () => {
   useEffect(() => {
     if (!coinId) return;
     const getCryptoData = async () => {
-      const data = await fetchCryptoDetails(coinId);
+      const data = await fetchSingleCryptoDetails(coinId);
       setCryptoData(data);
     };
 
     getCryptoData();
-  }, []);
+  }, [coinId]);
 
   return (
     <div className="main pb-8">
       <div className="w-8/12 mx-auto pt-8">
         <div className="main_white main_exch">
-          <CryptoChart coinId={coinId} />
-          <h1>Bitcoin Info</h1>
           {cryptoData ? (
-            <pre>{JSON.stringify(cryptoData, null, 2)}</pre>
+            <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
+              <h2 className="text-2xl font-bold text-gray-800 text-center">
+                #{cryptoData.market_cap_rank} {cryptoData.name} Info
+              </h2>
+
+              <div className="grid grid-cols-2 gap-4 mt-4">
+                <div className="p-4 bg-gray-100 rounded-lg shadow">
+                  <p className="text-gray-500 text-sm">Market Cap</p>
+                  <p className="text-lg font-semibold text-gray-800">
+                    ${cryptoData.market_cap}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-100 rounded-lg shadow">
+                  <p className="text-gray-500 text-sm">24h Trading Volume</p>
+                  <p className="text-lg font-semibold text-gray-800">
+                    ${cryptoData.total_volume}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-100 rounded-lg shadow">
+                  <p className="text-gray-500 text-sm">Circulating Supply</p>
+                  <p className="text-lg font-semibold text-gray-800">
+                    {cryptoData.circulating_supply}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-100 rounded-lg shadow">
+                  <p className="text-gray-500 text-sm">Total Supply</p>
+                  <p className="text-lg font-semibold text-gray-800">
+                    {cryptoData.total_supply || "N/A"}
+                  </p>
+                </div>
+                <div className="p-4 bg-gray-100 rounded-lg shadow">
+                  <p className="text-gray-500 text-sm">Max Supply</p>
+                  <p className="text-lg font-semibold text-gray-800">
+                    {cryptoData.max_supply || "N/A"}
+                  </p>
+                </div>
+              </div>
+            </div>
           ) : (
             <p>Loading...</p>
           )}
+          <CryptoChart coinId={coinId} />
         </div>
       </div>
     </div>

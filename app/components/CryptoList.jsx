@@ -26,7 +26,6 @@ export default function CryptoList() {
   useEffect(() => {
     const loadData = async () => {
       const data = await fetchCryptoPrices();
-      console.log(data);
       setCoins(data);
     };
 
