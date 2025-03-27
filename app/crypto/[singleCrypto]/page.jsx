@@ -1,10 +1,11 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+
+import Image from "next/image";
 
 import CryptoChart from "../../components/CryptoChar";
-
-import { useParams } from "next/navigation";
 import { fetchSingleCryptoDetails } from "@/app/features/api/getSingleCrypto";
 
 const SingleCrypto = () => {
@@ -17,6 +18,7 @@ const SingleCrypto = () => {
     if (!coinId) return;
     const getCryptoData = async () => {
       const data = await fetchSingleCryptoDetails(coinId);
+      console.log(data);
       setCryptoData(data);
     };
 
@@ -34,8 +36,19 @@ const SingleCrypto = () => {
         <div className="main_white main_exch">
           {cryptoData ? (
             <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
-              <h2 className="text-2xl font-bold text-gray-800 text-center">
-                #{cryptoData.market_cap_rank} {cryptoData.name} Info
+              <h2 className="text-2xl font-bold text-gray-800 text-center flex justify-center">
+                <p className="flex my-auto pr-2">
+                  <Image
+                    src={cryptoData.image}
+                    alt={cryptoData.name}
+                    width="24"
+                    height="24"
+                  />
+                </p>
+                {cryptoData.name}
+                <p className="pl-2 text-[#666a7a]">
+                  #{cryptoData.market_cap_rank}
+                </p>
               </h2>
 
               <div className="grid grid-cols-2 gap-4 mt-4">
@@ -76,7 +89,9 @@ const SingleCrypto = () => {
               <div className="loader" />
             </div>
           )}
-          <CryptoChart coinId={coinId} />
+          <div className="mt-5">
+            <CryptoChart coinId={coinId} />
+          </div>
         </div>
       </div>
     </div>
