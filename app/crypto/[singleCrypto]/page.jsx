@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import CryptoChart from "../../components/CryptoChar";
 
@@ -23,6 +23,11 @@ const SingleCrypto = () => {
     getCryptoData();
   }, [coinId]);
 
+  const formatNumberIntl = useCallback(
+    (number) => new Intl.NumberFormat("en-US").format(number),
+    []
+  );
+
   return (
     <div className="main pb-8">
       <div className="w-8/12 mx-auto pt-8">
@@ -37,37 +42,39 @@ const SingleCrypto = () => {
                 <div className="p-4 bg-gray-100 rounded-lg shadow">
                   <p className="text-gray-500 text-sm">Market Cap</p>
                   <p className="text-lg font-semibold text-gray-800">
-                    ${cryptoData.market_cap}
+                    ${formatNumberIntl(cryptoData.market_cap)}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-100 rounded-lg shadow">
                   <p className="text-gray-500 text-sm">24h Trading Volume</p>
                   <p className="text-lg font-semibold text-gray-800">
-                    ${cryptoData.total_volume}
+                    ${formatNumberIntl(cryptoData.total_volume)}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-100 rounded-lg shadow">
                   <p className="text-gray-500 text-sm">Circulating Supply</p>
                   <p className="text-lg font-semibold text-gray-800">
-                    {cryptoData.circulating_supply}
+                    {formatNumberIntl(cryptoData.circulating_supply)}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-100 rounded-lg shadow">
                   <p className="text-gray-500 text-sm">Total Supply</p>
                   <p className="text-lg font-semibold text-gray-800">
-                    {cryptoData.total_supply || "N/A"}
+                    {formatNumberIntl(cryptoData.total_supply) || "N/A"}
                   </p>
                 </div>
                 <div className="p-4 bg-gray-100 rounded-lg shadow">
                   <p className="text-gray-500 text-sm">Max Supply</p>
                   <p className="text-lg font-semibold text-gray-800">
-                    {cryptoData.max_supply || "N/A"}
+                    {formatNumberIntl(cryptoData.max_supply) || "N/A"}
                   </p>
                 </div>
               </div>
             </div>
           ) : (
-            <p>Loading...</p>
+            <div className="h-60 flex justify-center">
+              <div className="loader" />
+            </div>
           )}
           <CryptoChart coinId={coinId} />
         </div>
