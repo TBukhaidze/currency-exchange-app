@@ -44,7 +44,11 @@ const Currency = () => {
         className="border p-2 rounded-md mb-2 w-full"
       />
 
-      {loading && <p className="mt-2">Loading...</p>}
+      {loading && (
+        <div className="h-60 flex justify-center">
+          <div className="loader" />
+        </div>
+      )}
       {error && <p className="text-red-500 mt-2">Error: {error}</p>}
 
       {data && (
