@@ -14,20 +14,24 @@ const Currency = () => {
     setDate(today);
   }, []);
 
-  const fetchRates = async () => {
-    setLoading(true);
-    setError(null);
+  useEffect(() => {
+    const fetchRates = async () => {
+      setLoading(true);
+      setError(null);
 
-    try {
-      const result = await fetchCurrencyPrice(date);
-      console.log(result);
-      setData(result);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+      try {
+        const result = await fetchCurrencyPrice(date);
+        console.log(result);
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRates();
+  }, [date]);
 
   return (
     <div className="p-4 border rounded-xl shadow-lg max-w-md mx-auto">
@@ -39,13 +43,6 @@ const Currency = () => {
         onChange={(e) => setDate(e.target.value)}
         className="border p-2 rounded-md mb-2 w-full"
       />
-
-      <button
-        onClick={fetchRates}
-        className="bg-blue-500 text-white px-4 py-2 rounded-md w-full"
-      >
-        გაიგე კურსი
-      </button>
 
       {loading && <p className="mt-2">Loading...</p>}
       {error && <p className="text-red-500 mt-2">Error: {error}</p>}
