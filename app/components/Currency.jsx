@@ -33,6 +33,28 @@ const Currency = () => {
     fetchRates();
   }, [date]);
 
+  const targetCurrencies = [
+    "USD",
+    "EUR",
+    "RUB",
+    "TRY",
+    "GBP",
+    "CHF",
+    "AZN",
+    "AMD",
+    "ILS",
+    "PLN",
+  ];
+
+  const getFilteredCurrencies = (currencies) => {
+    return currencies
+      .filter((currency) => targetCurrencies.includes(currency.code))
+      .sort(
+        (a, b) =>
+          targetCurrencies.indexOf(a.code) - targetCurrencies.indexOf(b.code)
+      );
+  };
+
   return (
     <div className="p-4 border rounded-xl shadow-lg max-w-md mx-auto">
       <h2 className="text-lg font-bold mb-2">ვალუტის კურსი</h2>
@@ -53,7 +75,7 @@ const Currency = () => {
 
       {data && (
         <div className="mt-4">
-          {data[0]?.currencies?.map((currency) => (
+          {getFilteredCurrencies(data[0]?.currencies || []).map((currency) => (
             <div key={currency.code} className="border p-2 rounded-md mb-2">
               <p>
                 <strong>{currency.code}</strong>: {currency.rate} GEL
