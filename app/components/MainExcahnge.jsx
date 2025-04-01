@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 
 import Calculator from "./Calculator";
-import Exchange from "./Exchange";
+import CurrencyList from "./CurrencyList";
 
 import Spinner from "./spinner";
 import { getCurrentTime } from "../utils/getCurrentTime";
@@ -32,7 +32,7 @@ const MainExchange = () => {
         </div>
         <div className="flex justify-between text-center">
           <div className="w-full grid grid-cols-5 gap-8">
-            <Exchange />
+            <CurrencyList />
           </div>
         </div>
       </div>

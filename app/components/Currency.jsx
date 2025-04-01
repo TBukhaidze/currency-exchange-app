@@ -66,13 +66,6 @@ const Currency = () => {
         className="border p-2 rounded-md mb-2 w-full"
       />
 
-      {loading && (
-        <div className="h-60 flex justify-center">
-          <div className="loader" />
-        </div>
-      )}
-      {error && <p className="text-red-500 mt-2">Error: {error}</p>}
-
       {data && (
         <div className="mt-4">
           {getFilteredCurrencies(data[0]?.currencies || []).map((currency) => (

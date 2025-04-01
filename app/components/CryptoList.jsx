@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
@@ -9,7 +10,6 @@ import { getCurrentTime } from "../utils/getCurrentTime";
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
 import Spinner from "./Spinner";
-import Link from "next/link";
 
 export default function CryptoList() {
   const [coins, setCoins] = useState([]);

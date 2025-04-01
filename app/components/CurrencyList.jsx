@@ -18,7 +18,7 @@ import arm from "../../public/icons/arm.svg";
 import isr from "../../public/icons/isr.svg";
 import pol from "../../public/icons/pol.svg";
 
-const Exchange = () => {
+const CurrencyList = () => {
   const [date, setDate] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -75,7 +75,7 @@ const Exchange = () => {
   return (
     <>
       {loading && (
-        <div className="h-60 flex justify-center">
+        <div className="h-60 flex justify-center col-span-5">
           <div className="loader" />
         </div>
       )}
@@ -101,18 +101,22 @@ const Exchange = () => {
                   <div className="flex gap-8 main_prices">
                     <Image src={flags[index]} alt="usaIcon" />
                     <p className="my-auto">
-                      {currency.quentity} {currency.name}
+                      {currency.quantity} {currency.name}
                     </p>
                   </div>
                 </div>
                 <div className="flex text-left my-auto main_prices">
                   <span>{currency.rate}</span>
                   <span className="my-auto px-3">
-                    <Image src={up} alt="up" />
+                    <Image src={currency.diff < 0 ? down : up} alt="up/down" />
                   </span>
                 </div>
-                <div className="my-auto main_prices">{currency.rate}</div>
-                <div className="my-auto main_prices">{currency.rate}</div>
+                <div className="my-auto main_prices">
+                  {(currency.rate * 0.99).toFixed(4)}
+                </div>
+                <div className="my-auto main_prices">
+                  {(currency.rate * 1.01).toFixed(4)}
+                </div>
               </React.Fragment>
             )
           )}
@@ -122,4 +126,4 @@ const Exchange = () => {
   );
 };
 
-export default Exchange;
+export default CurrencyList;
