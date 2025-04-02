@@ -5,7 +5,8 @@ import info from "../../public/icons/info.svg";
 
 const Calculator = () => {
   return (
-    <>
+    <div className="main_white main_exch w-2/5 ml-6 h-full">
+      <h2 className="calc_h2 mb-10">კალკულატორი</h2>
       <p className="calc_p">მსურს გავყიდო</p>
       <div className="w-full flex calc_div justify-between">
         <input className="calc_input w-full" type="text" placeholder="0.00" />
@@ -196,7 +197,7 @@ const Calculator = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
