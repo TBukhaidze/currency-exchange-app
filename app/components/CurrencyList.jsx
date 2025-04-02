@@ -21,15 +21,19 @@ import arm from "../../public/icons/arm.svg";
 import isr from "../../public/icons/isr.svg";
 import pol from "../../public/icons/pol.svg";
 
+import toggle from "../../public/icons/toggle.svg";
+import info from "../../public/icons/info.svg";
+
 const CurrencyList = () => {
   const [date, setDate] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
+  const [selectedCurrency1, setSelectedCurrency1] = useState("GEL");
+  const [selectedCurrency2, setSelectedCurrency2] = useState("USD");
 
   const flags = [usa, eur, rus, tr, uk, che, azr, arm, isr, pol];
-
-  const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -84,6 +88,13 @@ const CurrencyList = () => {
           targetCurrencies.indexOf(a.code) - targetCurrencies.indexOf(b.code)
       );
   };
+
+  const selectedRate1 =
+    data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)?.rate || 1;
+  const selectedRate2 =
+    data?.[0]?.currencies?.find((c) => c.code === selectedCurrency2)?.rate || 1;
+
+  const exchangeRate = (selectedRate1 / selectedRate2).toFixed(4);
 
   return (
     <>
@@ -156,6 +167,85 @@ const CurrencyList = () => {
                 )}
               </>
             )}
+          </div>
+        </div>
+      </div>
+
+      <div className="main_white main_exch w-2/5 ml-6 h-full">
+        <h2 className="calc_h2 mb-10">კალკულატორი</h2>
+        <p className="calc_p">მსურს გავყიდო</p>
+        <div className="w-full flex calc_div justify-between">
+          <input className="calc_input w-full" type="text" placeholder="0.00" />
+          <div className="flex mr-2">
+            <select
+              className="calc_select select_text text-right pr-2 max-w-48"
+              value={selectedCurrency1}
+              onChange={(e) => setSelectedCurrency1(e.target.value)}
+            >
+              <option value="GEL">1 ლარი</option>
+              {data &&
+                getFilteredCurrencies(data[0]?.currencies || []).map(
+                  (currency) =>
+                    currency.code !== "GEL" ? (
+                      <option key={currency.code} value={currency.code}>
+                        {currency.quantity} {currency.name}
+                      </option>
+                    ) : null
+                )}
+            </select>
+          </div>
+        </div>
+
+        <div className="flex justify-center my-4">
+          <button
+            className="calc_toggle"
+            onClick={() => {
+              setSelectedCurrency1(selectedCurrency2);
+              setSelectedCurrency2(selectedCurrency1);
+            }}
+          >
+            <Image src={toggle} alt="toggle" />
+          </button>
+        </div>
+
+        <p className="calc_p">მსურს ვიყიდო</p>
+        <div className="w-full flex calc_div justify-between">
+          <input className="calc_input w-full" type="text" placeholder="0.00" />
+          <div className="flex mr-2">
+            <select
+              className="calc_select select_text text-right pr-2 max-w-48"
+              value={selectedCurrency2}
+              onChange={(e) => setSelectedCurrency2(e.target.value)}
+            >
+              <option value="USD">1 დოლარი</option>
+              <option value="GEL">1 ლარი</option>
+              {data &&
+                getFilteredCurrencies(data[0]?.currencies || []).map(
+                  (currency) =>
+                    currency.code !== "USD" && currency.code !== "GEL" ? (
+                      <option key={currency.code} value={currency.code}>
+                        {currency.quantity} {currency.name}
+                      </option>
+                    ) : null
+                )}
+            </select>
+          </div>
+        </div>
+        <div className="mt-6">
+          <span className="calc_span">
+            {data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)
+              ?.quantity || 1}{" "}
+            {selectedCurrency1} = {exchangeRate} {selectedCurrency2}
+          </span>
+          <div className="flex mt-6">
+            <Image src={info} alt="info" />
+            <div>
+              <p className="calc_p">
+                გაითვალისწინეთ, გაცვლითი კურსი ფილიალის მიხედვით შესაძლებელია
+                განსხვავდებოდეს. ინფორმაციის მისაღებად, მიმართეთ თქვენთვის
+                სასურველ ფილიალს.
+              </p>
+            </div>
           </div>
         </div>
       </div>
