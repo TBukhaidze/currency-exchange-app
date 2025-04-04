@@ -20,6 +20,7 @@ import azr from "../../public/icons/azr.svg";
 import arm from "../../public/icons/arm.svg";
 import isr from "../../public/icons/isr.svg";
 import pol from "../../public/icons/pol.svg";
+import uae from "../../public/icons/uae.svg";
 
 import toggle from "../../public/icons/toggle.svg";
 import info from "../../public/icons/info.svg";
@@ -32,8 +33,10 @@ const CurrencyList = () => {
   const [currentTime, setCurrentTime] = useState("");
   const [selectedCurrency1, setSelectedCurrency1] = useState("GEL");
   const [selectedCurrency2, setSelectedCurrency2] = useState("USD");
+  const [amount, setAmount] = useState("");
+  const [convertedAmount, setConvertedAmount] = useState("");
 
-  const flags = [usa, eur, rus, tr, uk, che, azr, arm, isr, pol];
+  const flags = [usa, eur, rus, tr, uk, uae, che, azr, arm, isr, pol];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -67,12 +70,29 @@ const CurrencyList = () => {
     fetchRates();
   }, [date]);
 
+  useEffect(() => {
+    const rate1 =
+      data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)?.rate ||
+      1;
+    const rate2 =
+      data?.[0]?.currencies?.find((c) => c.code === selectedCurrency2)?.rate ||
+      1;
+
+    if (!isNaN(parseFloat(amount)) && isFinite(amount)) {
+      const result = (parseFloat(amount) * (rate1 / rate2)).toFixed(4);
+      setConvertedAmount(result);
+    } else {
+      setConvertedAmount("");
+    }
+  }, [amount, selectedCurrency1, selectedCurrency2, data]);
+
   const targetCurrencies = [
     "USD",
     "EUR",
     "RUB",
     "TRY",
     "GBP",
+    "AED",
     "CHF",
     "AZN",
     "AMD",
@@ -175,7 +195,13 @@ const CurrencyList = () => {
         <h2 className="calc_h2 mb-10">კალკულატორი</h2>
         <p className="calc_p">მსურს გავყიდო</p>
         <div className="w-full flex calc_div justify-between">
-          <input className="calc_input w-full" type="text" placeholder="0.00" />
+          <input
+            className="calc_input w-full"
+            type="text"
+            placeholder="0.00"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
+          />
           <div className="flex mr-2">
             <select
               className="calc_select select_text text-right pr-2 max-w-48"
@@ -210,7 +236,13 @@ const CurrencyList = () => {
 
         <p className="calc_p">მსურს ვიყიდო</p>
         <div className="w-full flex calc_div justify-between">
-          <input className="calc_input w-full" type="text" placeholder="0.00" />
+          <input
+            className="calc_input w-full"
+            type="text"
+            placeholder="0.00"
+            value={convertedAmount}
+            readOnly
+          />
           <div className="flex mr-2">
             <select
               className="calc_select select_text text-right pr-2 max-w-48"
