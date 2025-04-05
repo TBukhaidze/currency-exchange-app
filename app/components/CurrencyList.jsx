@@ -1,26 +1,16 @@
-import Image from "next/image";
-
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 
 import { fetchCurrencyPrice } from "../features/api/currencyApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 
 import Spinner from "./Spinner";
 
+import { currencyFlags } from "../features/constants/currencyFlags";
+import { targetCurrencies } from "../features/constants/targetCurrencies";
+
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
-
-import usa from "../../public/icons/usa.svg";
-import eur from "../../public/icons/eur.svg";
-import rus from "../../public/icons/rus.svg";
-import tr from "../../public/icons/tr.svg";
-import uk from "../../public/icons/uk.svg";
-import che from "../../public/icons/che.svg";
-import azr from "../../public/icons/azr.svg";
-import arm from "../../public/icons/arm.svg";
-import isr from "../../public/icons/isr.svg";
-import pol from "../../public/icons/pol.svg";
-import uae from "../../public/icons/uae.svg";
 
 import toggle from "../../public/icons/toggle.svg";
 import info from "../../public/icons/info.svg";
@@ -35,8 +25,6 @@ const CurrencyList = () => {
   const [selectedCurrency2, setSelectedCurrency2] = useState("USD");
   const [amount, setAmount] = useState("");
   const [convertedAmount, setConvertedAmount] = useState("");
-
-  const flags = [usa, eur, rus, tr, uk, uae, che, azr, arm, isr, pol];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,20 +73,6 @@ const CurrencyList = () => {
       setConvertedAmount("");
     }
   }, [amount, selectedCurrency1, selectedCurrency2, data]);
-
-  const targetCurrencies = [
-    "USD",
-    "EUR",
-    "RUB",
-    "TRY",
-    "GBP",
-    "AED",
-    "CHF",
-    "AZN",
-    "AMD",
-    "ILS",
-    "PLN",
-  ];
 
   const getFilteredCurrencies = (currencies) => {
     return currencies
@@ -157,11 +131,14 @@ const CurrencyList = () => {
             {data && (
               <>
                 {getFilteredCurrencies(data[0]?.currencies || []).map(
-                  (currency, index) => (
+                  (currency) => (
                     <React.Fragment key={currency.code}>
-                      <div key={currency.code} className="text-left col-span-2">
+                      <div className="text-left col-span-2">
                         <div className="flex gap-8 main_prices">
-                          <Image src={flags[index]} alt="usaIcon" />
+                          <Image
+                            src={currencyFlags[currency.code]}
+                            alt={`${currency.code} flag`}
+                          />
                           <p className="my-auto">
                             {currency.quantity} {currency.name}
                           </p>
