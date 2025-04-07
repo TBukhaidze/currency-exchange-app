@@ -1,0 +1,75 @@
+{
+  "navbar": {
+    "home": "Home",
+    "currency": "Currency",
+    "crypto": "Crypto",
+    "contact": "Contact"
+  },
+
+  "main": {
+    "site_goal": "Site Purpose",
+    "market_problem": "Existing problem in the market",
+    "highlighted_problem": "problem",
+    "problem_description": "Today, many companies in the Georgian market offer currency exchange, but the rates differ. Users have to compare them to choose the best conditions.",
+    "site_purpose": "Site purpose",
+    "site_purpose_description": "The site automatically compares the exchange rates of all official currency exchange companies and offers the best options for buying and selling.",
+    "exchange_rates": "Exchange rates",
+    "crypto_rates": "Cryptocurrency rates",
+    "contact": "Contact"
+  },
+
+  "carousel": {
+    "currency_title": "Best currency exchange rate",
+    "currency_button": "Currency rates",
+    "gas_title": "Best gasoline price",
+    "gas_button": "Gasoline prices",
+    "crypto_title": "Cryptocurrency exchange rate",
+    "crypto_button": "Crypto rates",
+    "bitcoin_title": "Bitcoin",
+    "bitcoin_button": "Bitcoin rate"
+  },
+
+  "footer": {
+    "about": "About",
+    "calculator": "Calculator",
+    "exchange": "Exchange",
+    "crypto": "Crypto",
+    "contact": "Contact",
+    "team": "Team",
+    "copyright": "Diamond, Inc. All rights reserved."
+  },
+
+  "currency": {
+    "rates_title": "Currency Rates",
+    "currency": "Currency",
+    "official": "Official",
+    "buy": "Buy",
+    "sell": "Sell",
+    "calculator": "Calculator",
+    "i_want_to_sell": "I want to sell",
+    "i_want_to_buy": "I want to buy",
+    "disclaimer": "Please note that exchange rates may vary by branch. For more information, please contact your preferred branch."
+  },
+
+  "crypto": {
+    "rates_title": "Cryptocurrency Rates",
+    "refresh_info": "Data will refresh in {seconds} seconds",
+    "currency": "Currency",
+    "price": "Price",
+    "market_cap": "Market Cap"
+  },
+
+  "cryptoDetail": {
+    "current_price": "Current Price",
+    "price_change_24h": "24h Change",
+    "market_cap": "Market Cap",
+    "volume_24h": "24h Volume",
+    "ath": "All Time High",
+    "circulating_supply": "Circulating Supply",
+    "total_supply": "Total Supply",
+    "max_supply": "Max Supply",
+    "price_range_24h": "24h Range",
+    "chart": "Chart",
+    "last_year": "last year"
+  }
+}

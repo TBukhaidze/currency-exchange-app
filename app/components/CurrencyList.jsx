@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 
 import { fetchCurrencyPrice } from "../features/api/currencyApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
+import { LanguageContext } from "../context/LanguageContext";
 
 import Spinner from "./Spinner";
 
@@ -16,6 +17,7 @@ import toggle from "../../public/icons/toggle.svg";
 import info from "../../public/icons/info.svg";
 
 const CurrencyList = () => {
+  const { translations } = useContext(LanguageContext);
   const [date, setDate] = useState("");
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
@@ -99,8 +101,10 @@ const CurrencyList = () => {
           </div>
         )}
         {error && <p className="text-red-500 mt-2">Error: {error}</p>}
-        <div className="flex justify-between  mb-10">
-          <h2 className="main_h2">ვალუტის კურსები</h2>
+        <div className="flex justify-between mb-10">
+          <h2 className="main_h2">
+            {translations.currency?.rates_title || "ვალუტის კურსები"}
+          </h2>
           <input
             type="date"
             value={date}
@@ -117,16 +121,24 @@ const CurrencyList = () => {
         <div className="flex justify-between text-center">
           <div className="w-full grid grid-cols-5 gap-8">
             <div className="text-left col-span-2">
-              <h3 className="main_h3">ვალუტა</h3>
+              <h3 className="main_h3">
+                {translations.currency?.currency || "ვალუტა"}
+              </h3>
             </div>
             <div>
-              <h3 className="main_h3">ოფიციალური</h3>
+              <h3 className="main_h3">
+                {translations.currency?.official || "ოფიციალური"}
+              </h3>
             </div>
             <div>
-              <h3 className="main_h3">ყიდვა</h3>
+              <h3 className="main_h3">
+                {translations.currency?.buy || "ყიდვა"}
+              </h3>
             </div>
             <div>
-              <h3 className="main_h3">გაყიდვა</h3>
+              <h3 className="main_h3">
+                {translations.currency?.sell || "გაყიდვა"}
+              </h3>
             </div>
             {data && (
               <>
@@ -169,8 +181,12 @@ const CurrencyList = () => {
       </div>
 
       <div className="main_white main_exch w-2/5 ml-6 h-full">
-        <h2 className="calc_h2 mb-10">კალკულატორი</h2>
-        <p className="calc_p">მსურს გავყიდო</p>
+        <h2 className="calc_h2 mb-10">
+          {translations.currency?.calculator || "კალკულატორი"}
+        </h2>
+        <p className="calc_p">
+          {translations.currency?.i_want_to_sell || "მსურს გავყიდო"}
+        </p>
         <div className="w-full flex calc_div justify-between">
           <input
             className="calc_input w-full"
@@ -211,7 +227,9 @@ const CurrencyList = () => {
           </button>
         </div>
 
-        <p className="calc_p">მსურს ვიყიდო</p>
+        <p className="calc_p">
+          {translations.currency?.i_want_to_buy || "მსურს ვიყიდო"}
+        </p>
         <div className="w-full flex calc_div justify-between">
           <input
             className="calc_input w-full"
@@ -250,9 +268,8 @@ const CurrencyList = () => {
             <Image src={info} alt="info" />
             <div>
               <p className="calc_p">
-                გაითვალისწინეთ, გაცვლითი კურსი ფილიალის მიხედვით შესაძლებელია
-                განსხვავდებოდეს. ინფორმაციის მისაღებად, მიმართეთ თქვენთვის
-                სასურველ ფილიალს.
+                {translations.currency?.disclaimer ||
+                  "გაითვალისწინეთ, გაცვლითი კურსი ფილიალის მიხედვით შესაძლებელია განსხვავდებოდეს. ინფორმაციის მისაღებად, მიმართეთ თქვენთვის სასურველ ფილიალს."}
               </p>
             </div>
           </div>

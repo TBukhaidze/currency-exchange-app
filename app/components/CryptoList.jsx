@@ -1,17 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
+import { LanguageContext } from "../context/LanguageContext";
 import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
-
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
 import Spinner from "./Spinner";
 
 export default function CryptoList() {
+  const { translations } = useContext(LanguageContext);
   const [coins, setCoins] = useState([]);
   const [currentTime, setCurrentTime] = useState("");
   const [secondsLeft, setSecondsLeft] = useState(60);
@@ -56,13 +56,18 @@ export default function CryptoList() {
     <div className="w-8/12 mx-auto pt-8">
       <div className="main_white main_exch">
         <div className="flex justify-between mb-10">
-          <h2 className="main_h2">კრიპტოვალუტის კურსები</h2>
+          <h2 className="main_h2">
+            {translations.crypto?.rates_title || "კრიპტოვალუტის კურსები"}
+          </h2>
           {currentTime === "" ? (
             <Spinner />
           ) : (
             <>
-              <p className="main_time ">
-                ინფორმაცია განახლდება {secondsLeft} წამში
+              <p className="main_time">
+                {translations.crypto?.refresh_info?.replace(
+                  "{seconds}",
+                  secondsLeft
+                ) || `ინფორმაცია განახლდება ${secondsLeft} წამში`}
               </p>
               <p className="main_time pr-7">{currentTime}</p>
             </>
@@ -71,22 +76,30 @@ export default function CryptoList() {
         <div className="flex justify-between text-center pb-5">
           <div className="w-full grid grid-cols-5 gap-8">
             <div className="text-left col-span-2">
-              <h3 className="main_h3 pl-5">ვალუტა</h3>
+              <h3 className="main_h3 pl-5">
+                {translations.crypto?.currency || "ვალუტა"}
+              </h3>
             </div>
             <div>
-              <h3 className="main_h3">ოფიციალური</h3>
+              <h3 className="main_h3">
+                {translations.crypto?.price || "ფასი"}
+              </h3>
             </div>
             <div>
               <span className="font-light">24h</span>
             </div>
             <div>
-              <h3 className="main_h3">კაპიტალიზაცია</h3>
+              <h3 className="main_h3">
+                {translations.crypto?.market_cap || "კაპიტალიზაცია"}
+              </h3>
             </div>
           </div>
         </div>
         {coins.length ? (
           coins.map((coin) => {
             const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
+            const changeText =
+              coin.market_cap_change_percentage_24h.toFixed(2) + "%";
 
             return (
               <Link key={coin.id} href={`/crypto/${coin.id.toLowerCase()}`}>
@@ -107,13 +120,13 @@ export default function CryptoList() {
                       </div>
                     </div>
                     <div className="flex justify-center my-auto main_prices">
-                      <span>${coin.current_price}</span>
+                      <span>${formatNumberIntl(coin.current_price)}</span>
                     </div>
                     <div className="my-auto main_prices flex justify-center">
                       <span className="my-auto px-3">
                         <Image src={icon} alt="change" />
                       </span>
-                      {coin.market_cap_change_percentage_24h.toFixed(2)}%
+                      {changeText}
                     </div>
                     <div className="my-auto main_prices">
                       ${formatNumberIntl(coin.market_cap)}

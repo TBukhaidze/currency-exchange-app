@@ -59,7 +59,7 @@ body {
 }
 
 .personal_cab {
-  width: 190px;
+  width: auto;
   height: 40px;
   background-color: var(--orange);
   border-radius: 8px;
