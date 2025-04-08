@@ -52,10 +52,27 @@ body {
   color: var(--txt-black);
   font-weight: 400;
   font-size: large;
+  position: relative;
 }
 
 .nav_text_black:hover {
   color: var(--orange);
+}
+
+.nav_text_black::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 50%;
+  background-color: var(--orange);
+  transition: all 0.3s ease;
+}
+
+.nav_text_black:hover::after {
+  width: 100%;
+  left: 0;
 }
 
 .personal_cab {

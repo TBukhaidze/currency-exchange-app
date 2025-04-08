@@ -21,21 +21,21 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-white">
-      <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+    <footer className="bg-white border-t border-gray-200">
+      <div className="w-full px-4 py-8 mx-auto sm:px-6 lg:px-8">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-3 md:gap-x-8 lg:gap-x-10">
           {footerLinks.map((link, index) => (
-            <div key={index} className="px-5 py-2">
+            <div key={index}>
               <Link
                 href={link.href}
-                className="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-sm md:text-base text-gray-500 hover:text-gray-900 transition-colors whitespace-nowrap"
               >
                 {link.text}
               </Link>
             </div>
           ))}
         </nav>
-        <p className="mt-8 text-base leading-6 text-center text-gray-400">
+        <p className="mt-6 md:mt-8 text-xs md:text-sm text-center text-gray-400">
           © {year}{" "}
           {translations.footer?.copyright ||
             "Diamond, Inc. All rights reserved."}

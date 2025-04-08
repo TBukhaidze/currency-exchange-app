@@ -43,7 +43,7 @@ const SwiperCarousel = () => {
   ];
 
   return (
-    <div className="h-[50vh]">
+    <div className="h-[40vh] sm:h-[45vh] lg:h-[50vh]">
       <Swiper
         spaceBetween={30}
         centeredSlides
