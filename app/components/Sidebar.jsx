@@ -8,7 +8,7 @@ import Link from "next/link";
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className="sidebar hidden lg:block md:block">
       <div className="flex justify-center mb-4 sidebar_el">
         <Link href="/">
           <Image src={home} alt="home" />

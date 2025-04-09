@@ -20,7 +20,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full md:w-8/12 mx-auto my-7 relative">
-      <div className="flex justify-between items-center text-base md:text-3xl px-4 md:px-0">
+      <div className="flex justify-between items-center text-base md:text-3xl px-4 md:px-0 md:justify-center">
         <div className="txt_orange flex-shrink-0">
           <Link href="/" className="flex items-center gap-1">
             Diamond
@@ -28,7 +28,7 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="hidden md:flex gap-6 flex-1 justify-center mx-4">
+        <div className="hidden md:flex gap-10 flex-1 justify-center mx-4">
           <div className="nav_text_black whitespace-nowrap">
             <Link href="/">{translations.navbar?.home || "მთავარი"}</Link>
           </div>
