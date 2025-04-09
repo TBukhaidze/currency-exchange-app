@@ -75,7 +75,7 @@ const Navbar = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white z-50 shadow-lg px-4 py-2">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white z-50 shadow-lg px-4 py-2 text-center">
           <div className="nav_text_black block py-3 border-b">
             <Link href="/" onClick={toggleMenu}>
               {translations.navbar?.home || "მთავარი"}
