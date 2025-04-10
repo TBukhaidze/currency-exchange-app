@@ -12,7 +12,7 @@ import telegram from "../../public/icons/telegram.svg";
 const ContactPage = () => {
   return (
     <div className="main pb-8">
-      <h2 className="main_h2 text-center pt-5">Developer</h2>
+      <h2 className="main_h2 text-center pt-5">Contact</h2>
       <div className="p-4 border-t mx-8" />
 
       <div className="max-w-md w-full mx-auto mb-8 px-4">
@@ -40,7 +40,7 @@ const ContactPage = () => {
           <div className="p-4 border-t mx-8 mt-2">
             <p className="text-center text-gray-600">Contacts</p>
             <ul className="flex justify-center items-center flex-wrap gap-5 mt-4">
-              <li>
+              <li className="contacts_svg">
                 <Link
                   href="https://www.facebook.com/buxa.buxa.7/"
                   target="_blank"
@@ -48,12 +48,12 @@ const ContactPage = () => {
                   <Image src={fb} alt="Facebook icon" />
                 </Link>
               </li>
-              <li>
+              <li className="contacts_svg">
                 <Link href="https://github.com/TBukhaidze" target="_blank">
                   <Image src={gitHub} alt="GitHub icon" />
                 </Link>
               </li>
-              <li>
+              <li className="contacts_svg">
                 <Link
                   href="https://www.linkedin.com/in/temuri-bukhaidze-83728633a/"
                   target="_blank"
@@ -61,7 +61,7 @@ const ContactPage = () => {
                   <Image src={linkedIn} alt="LinkedIn icon" />
                 </Link>
               </li>
-              <li>
+              <li className="contacts_svg">
                 <Link href="https://t.me/temobu" target="_blank">
                   <Image src={telegram} alt="Telegram icon" />
                 </Link>

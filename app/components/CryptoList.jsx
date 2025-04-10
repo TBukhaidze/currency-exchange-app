@@ -53,9 +53,9 @@ export default function CryptoList() {
   );
 
   return (
-    <div className="w-8/12 mx-auto pt-8">
+    <div className="lg:w-8/12 md:w-11/12 w-full mx-auto pt-8">
       <div className="main_white main_exch">
-        <div className="flex justify-between mb-10">
+        <div className="lg:flex lg:justify-between mb-10 text-center">
           <h2 className="main_h2">
             {translations.crypto?.rates_title || "კრიპტოვალუტის კურსები"}
           </h2>
@@ -74,7 +74,7 @@ export default function CryptoList() {
           )}
         </div>
         <div className="flex justify-between text-center pb-5">
-          <div className="w-full grid grid-cols-5 gap-8">
+          <div className="w-full grid grid-cols-3 sm:grid-cols-5 gap-8">
             <div className="text-left col-span-2">
               <h3 className="main_h3 pl-5">
                 {translations.crypto?.currency || "ვალუტა"}
@@ -85,10 +85,10 @@ export default function CryptoList() {
                 {translations.crypto?.price || "ფასი"}
               </h3>
             </div>
-            <div>
+            <div className="hidden sm:block">
               <span className="font-light">24h</span>
             </div>
-            <div>
+            <div className="hidden sm:block">
               <h3 className="main_h3">
                 {translations.crypto?.market_cap || "კაპიტალიზაცია"}
               </h3>
@@ -104,9 +104,9 @@ export default function CryptoList() {
             return (
               <Link key={coin.id} href={`/crypto/${coin.id.toLowerCase()}`}>
                 <div className="flex justify-between text-center my-3">
-                  <div className="w-full grid grid-cols-5 gap-8">
+                  <div className="w-full grid grid-cols-3 sm:grid-cols-5 gap-8">
                     <div className="text-left col-span-2">
-                      <div className="flex gap-8 main_prices">
+                      <div className="flex gap-4 main_prices">
                         {coin.market_cap_rank}
                         <Image
                           src={coin.image}
@@ -122,13 +122,13 @@ export default function CryptoList() {
                     <div className="flex justify-center my-auto main_prices">
                       <span>${formatNumberIntl(coin.current_price)}</span>
                     </div>
-                    <div className="my-auto main_prices flex justify-center">
-                      <span className="my-auto px-3">
+                    <div className="hidden sm:flex my-auto main_prices justify-center">
+                      <span className="my-auto px-2">
                         <Image src={icon} alt="change" />
                       </span>
                       {changeText}
                     </div>
-                    <div className="my-auto main_prices">
+                    <div className="hidden sm:block main_prices overflow-hidden truncate whitespace-nowrap">
                       ${formatNumberIntl(coin.market_cap)}
                     </div>
                   </div>
