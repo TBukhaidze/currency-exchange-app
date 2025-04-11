@@ -30,8 +30,8 @@ const SingleCrypto = () => {
   );
 
   return (
-    <div className="main pb-8">
-      <div className="w-full max-w-7xl mx-auto px-4 pt-8">
+    <div className="main pb-8 flex justify-center">
+      <div className="lg:w-8/12 md:w-11/12 w-full  pt-8">
         <div className="main_white main_exch">
           {cryptoData ? (
             <div className="bg-white shadow-lg rounded-2xl p-4 sm:p-6 mt-6">

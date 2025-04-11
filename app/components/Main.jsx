@@ -29,7 +29,7 @@ const Main = () => {
                 />
               </div>
             </div>
-            <div className="w-full sm:w-1/2 p-4 md:p-5 order-1 sm:order-2">
+            <div className="w-full sm:w-7/12 md:w-3/5 p-4 md:p-5 order-1 sm:order-2">
               <div className="text">
                 <h2 className="my-3 md:my-4 font-bold text-2xl sm:text-3xl md:text-4xl">
                   {translations.main?.market_problem || "ბაზარზე არსებული"}{" "}

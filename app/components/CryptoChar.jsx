@@ -13,6 +13,19 @@ import { fetchCryptoChart } from "../features/api/getCryptoChart";
 
 const CryptoChart = ({ coinId }) => {
   const [chartData, setChartData] = useState([]);
+  const [chartHeight, setChartHeight] = useState(300);
+
+  useEffect(() => {
+    const updateHeight = () => {
+      if (window.innerWidth < 640) setChartHeight(200);
+      else if (window.innerWidth < 1024) setChartHeight(300);
+      else setChartHeight(400);
+    };
+
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
   useEffect(() => {
     const getData = async () => {
@@ -28,7 +41,7 @@ const CryptoChart = ({ coinId }) => {
   }, [coinId]);
 
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <ResponsiveContainer width="100%" height={chartHeight}>
       <AreaChart data={chartData}>
         <defs>
           <linearGradient id="colorPrice" x1="0" y1="0" x2="0" y2="1">
