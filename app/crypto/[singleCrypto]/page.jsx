@@ -31,120 +31,104 @@ const SingleCrypto = () => {
 
   return (
     <div className="main pb-8">
-      <div className="w-8/12 mx-auto pt-8">
+      <div className="w-full max-w-7xl mx-auto px-4 pt-8">
         <div className="main_white main_exch">
           {cryptoData ? (
-            <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-6">
-              <h2 className="text-2xl font-bold text-gray-800 text-center flex justify-center">
-                <p className="flex my-auto pr-2">
-                  <Image
-                    src={cryptoData.image}
-                    alt={cryptoData.name}
-                    width="24"
-                    height="24"
-                  />
-                </p>
+            <div className="bg-white shadow-lg rounded-2xl p-4 sm:p-6 mt-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-center flex flex-wrap justify-center items-center gap-2">
+                <Image
+                  src={cryptoData.image}
+                  alt={cryptoData.name}
+                  width="24"
+                  height="24"
+                />
                 {cryptoData.name}
-                <p className="pl-2 text-[#9c9ea7] font-light">
+                <span className="text-[#9c9ea7] font-light">
                   ({cryptoData.symbol})
-                </p>
-                <p className="pl-2 text-[#666a7a]">
+                </span>
+                <span className="text-[#666a7a]">
                   #{cryptoData.market_cap_rank}
-                </p>
+                </span>
               </h2>
 
-              <div className="grid grid-cols-3 gap-4 mt-4">
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.current_price ||
-                      "Current Price"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    ${formatNumberIntl(cryptoData.current_price)}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.price_change_24h ||
-                      "24h Change"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800 flex items-center">
-                    {cryptoData.market_cap_change_percentage_24h > 0 ? (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+                {[
+                  {
+                    label:
+                      translations.cryptoDetail?.current_price ||
+                      "Current Price",
+                    value: `$${formatNumberIntl(cryptoData.current_price)}`,
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.price_change_24h ||
+                      "24h Change",
+                    value: (
                       <span className="flex items-center">
-                        <Image src={up} alt="up" className="mr-2" />
-                        {formatNumberIntl(
-                          cryptoData.market_cap_change_percentage_24h
-                        )}
-                      </span>
-                    ) : (
-                      <span className="flex items-center">
-                        <Image src={down} alt="down" className="mr-2" />
+                        <Image
+                          src={
+                            cryptoData.market_cap_change_percentage_24h > 0
+                              ? up
+                              : down
+                          }
+                          alt="change"
+                          className="mr-2"
+                        />
                         {formatNumberIntl(
                           Math.abs(cryptoData.market_cap_change_percentage_24h)
                         )}
+                        %
                       </span>
-                    )}
-                    %
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.market_cap || "Market Cap"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    ${formatNumberIntl(cryptoData.market_cap)}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.volume_24h || "24h Volume"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    ${formatNumberIntl(cryptoData.total_volume)}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.ath || "All Time High"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    ${formatNumberIntl(cryptoData.ath)}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.circulating_supply ||
-                      "Circulating Supply"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    {formatNumberIntl(cryptoData.circulating_supply)}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.total_supply || "Total Supply"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    {formatNumberIntl(cryptoData.total_supply) || "N/A"}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.max_supply || "Max Supply"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    {formatNumberIntl(cryptoData.max_supply) || "N/A"}
-                  </p>
-                </div>
-                <div className="p-4 bg-gray-100 rounded-lg shadow">
-                  <p className="text-gray-500 text-sm">
-                    {translations.cryptoDetail?.price_range_24h || "24h Range"}
-                  </p>
-                  <p className="text-lg font-semibold text-gray-800">
-                    ${formatNumberIntl(cryptoData.low_24h)}-$
-                    {formatNumberIntl(cryptoData.high_24h)}
-                  </p>
-                </div>
+                    ),
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.market_cap || "Market Cap",
+                    value: `$${formatNumberIntl(cryptoData.market_cap)}`,
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.volume_24h || "24h Volume",
+                    value: `$${formatNumberIntl(cryptoData.total_volume)}`,
+                  },
+                  {
+                    label: translations.cryptoDetail?.ath || "All Time High",
+                    value: `$${formatNumberIntl(cryptoData.ath)}`,
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.circulating_supply ||
+                      "Circulating Supply",
+                    value: formatNumberIntl(cryptoData.circulating_supply),
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.total_supply || "Total Supply",
+                    value: formatNumberIntl(cryptoData.total_supply) || "N/A",
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.max_supply || "Max Supply",
+                    value: formatNumberIntl(cryptoData.max_supply) || "N/A",
+                  },
+                  {
+                    label:
+                      translations.cryptoDetail?.price_range_24h || "24h Range",
+                    value: `$${formatNumberIntl(
+                      cryptoData.low_24h
+                    )} - $${formatNumberIntl(cryptoData.high_24h)}`,
+                  },
+                ].map((item, index) => (
+                  <div
+                    key={index}
+                    className="p-4 bg-gray-100 rounded-lg shadow flex flex-col justify-center"
+                  >
+                    <p className="text-gray-500 text-sm">{item.label}</p>
+                    <p className="text-lg font-semibold text-gray-800">
+                      {item.value}
+                    </p>
+                  </div>
+                ))}
               </div>
             </div>
           ) : (
@@ -152,12 +136,13 @@ const SingleCrypto = () => {
               <div className="loader" />
             </div>
           )}
+
           <div className="mt-5">
-            <h2 className="text-2xl font-bold text-gray-800 text-center flex justify-center py-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 text-center py-3">
               {cryptoData ? cryptoData.name : coinId}{" "}
               {translations.cryptoDetail?.chart || "Chart"}
             </h2>
-            <p className="pl-2 text-[#9c9ea7] flex justify-end">
+            <p className="pl-2 text-[#9c9ea7] text-right">
               {translations.cryptoDetail?.last_year || "last year"}
             </p>
             <CryptoChart coinId={coinId} />

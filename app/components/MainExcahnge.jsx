@@ -4,7 +4,7 @@ import CurrencyList from "./CurrencyList";
 
 const MainExchange = () => {
   return (
-    <div className="flex  gap-3 mb-8">
+    <div className="flex gap-3 mb-8">
       <CurrencyList />
     </div>
   );
