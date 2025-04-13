@@ -3,12 +3,14 @@
 import { useCallback, useEffect, useState, useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
 import { LanguageContext } from "../context/LanguageContext";
 import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
+
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
-import Spinner from "../components/Spinner";
+import Spinner from "./Spinner";
 
 export default function CryptoList() {
   const { translations } = useContext(LanguageContext);

@@ -5,8 +5,6 @@ import { fetchCurrencyPrice } from "../features/api/currencyApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 import { LanguageContext } from "../context/LanguageContext";
 
-import Spinner from "../components/Spinner";
-
 import { currencyFlags } from "../features/constants/currencyFlags";
 import { targetCurrencies } from "../features/constants/targetCurrencies";
 
@@ -15,6 +13,7 @@ import down from "../../public/icons/down.svg";
 
 import toggle from "../../public/icons/toggle.svg";
 import info from "../../public/icons/info.svg";
+import Spinner from "./Spinner";
 
 const CurrencyList = () => {
   const { translations } = useContext(LanguageContext);
