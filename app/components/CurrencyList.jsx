@@ -5,7 +5,7 @@ import { fetchCurrencyPrice } from "../features/api/currencyApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 import { LanguageContext } from "../context/LanguageContext";
 
-import Spinner from "./Spinner.jsx";
+import Spinner from "../components/Spinner";
 
 import { currencyFlags } from "../features/constants/currencyFlags";
 import { targetCurrencies } from "../features/constants/targetCurrencies";

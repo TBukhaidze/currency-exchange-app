@@ -8,7 +8,7 @@ import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
-import Spinner from "./Spinner.jsx";
+import Spinner from "../components/Spinner";
 
 export default function CryptoList() {
   const { translations } = useContext(LanguageContext);
