@@ -13,7 +13,7 @@ import down from "../../public/icons/down.svg";
 
 import toggle from "../../public/icons/toggle.svg";
 import info from "../../public/icons/info.svg";
-import Spinner from "./Spinner";
+import Spinner from "./spinner";
 
 const CurrencyList = () => {
   const { translations } = useContext(LanguageContext);

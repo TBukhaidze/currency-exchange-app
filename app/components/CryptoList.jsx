@@ -10,7 +10,7 @@ import { getCurrentTime } from "../utils/getCurrentTime";
 
 import up from "../../public/icons/up.svg";
 import down from "../../public/icons/down.svg";
-import Spinner from "./Spinner";
+import Spinner from "./spinner";
 
 export default function CryptoList() {
   const { translations } = useContext(LanguageContext);
