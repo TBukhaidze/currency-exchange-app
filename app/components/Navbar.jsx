@@ -76,26 +76,26 @@ const Navbar = () => {
 
       {isMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-white z-50 shadow-lg px-4 py-2 text-center">
-          <div className="nav_text_black block py-3 border-b">
-            <Link href="/" onClick={toggleMenu}>
+          <Link href="/" onClick={toggleMenu} className="w-full">
+            <div className="nav_text_black block py-3 border-b">
               {translations.navbar?.home || "მთავარი"}
-            </Link>
-          </div>
-          <div className="nav_text_black block py-3 border-b">
-            <Link href="/exchange" onClick={toggleMenu}>
+            </div>
+          </Link>
+          <Link href="/exchange" onClick={toggleMenu} className="w-full">
+            <div className="nav_text_black block py-3 border-b">
               {translations.navbar?.currency || "ვალუტა"}
-            </Link>
-          </div>
-          <div className="nav_text_black block py-3 border-b">
-            <Link href="/crypto" onClick={toggleMenu}>
+            </div>
+          </Link>
+          <Link href="/crypto" onClick={toggleMenu} className="w-full">
+            <div className="nav_text_black block py-3 border-b">
               {translations.navbar?.crypto || "კრიპტოვალუტა"}
-            </Link>
-          </div>
-          <div className="nav_text_black block py-3 border-b">
-            <Link href="/contact" onClick={toggleMenu}>
+            </div>
+          </Link>
+          <Link href="/contact" onClick={toggleMenu} className="w-full">
+            <div className="nav_text_black block py-3 border-b">
               {translations.navbar?.contact || "კონტაქტი"}
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       )}
     </div>
