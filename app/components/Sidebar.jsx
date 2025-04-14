@@ -1,32 +1,29 @@
 import Image from "next/image";
-
-import contact from "../../public/icons/contact.svg";
-import dolar from "../../public/icons/dolar.svg";
-import home from "../../public/icons/home.svg";
-import btc from "../../public/icons/btc.svg";
 import Link from "next/link";
+
+import { icons } from "../features/constants/icons";
 
 const Sidebar = () => {
   return (
     <div className="sidebar hidden lg:block md:block">
       <div className="flex justify-center mb-4 sidebar_el">
         <Link href="/">
-          <Image src={home} alt="home" />
+          <Image src={icons.home} alt="home" />
         </Link>
       </div>
       <div className="flex justify-center mb-4 sidebar_el">
         <Link href="/exchange">
-          <Image src={dolar} alt="dolar" />
+          <Image src={icons.dolar} alt="dolar" />
         </Link>
       </div>
       <div className="flex justify-center mb-4 sidebar_el">
         <Link href="/crypto">
-          <Image src={btc} alt="bitcoin" />
+          <Image src={icons.btc} alt="bitcoin" />
         </Link>
       </div>
       <div className="flex justify-center mb-4 sidebar_el">
         <Link href="/contact">
-          <Image src={contact} alt="contact" />
+          <Image src={icons.contact} alt="contact" />
         </Link>
       </div>
     </div>

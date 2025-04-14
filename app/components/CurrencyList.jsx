@@ -7,12 +7,8 @@ import { LanguageContext } from "../context/LanguageContext";
 
 import { currencyFlags } from "../features/constants/currencyFlags";
 import { targetCurrencies } from "../features/constants/targetCurrencies";
+import { icons } from "../features/constants/icons";
 
-import up from "../../public/icons/up.svg";
-import down from "../../public/icons/down.svg";
-
-import toggle from "../../public/icons/toggle.svg";
-import info from "../../public/icons/info.svg";
 import Spinner from "./spinner";
 
 const CurrencyList = () => {
@@ -140,7 +136,7 @@ const CurrencyList = () => {
               setSelectedCurrency2(selectedCurrency1);
             }}
           >
-            <Image src={toggle} alt="toggle" />
+            <Image src={icons.toggle} alt="toggle" />
           </button>
         </div>
 
@@ -182,7 +178,7 @@ const CurrencyList = () => {
             {selectedCurrency1} = {exchangeRate} {selectedCurrency2}
           </span>
           <div className="flex mt-6">
-            <Image src={info} alt="info" />
+            <Image src={icons.info} alt="info" />
             <div>
               <p className="calc_p">
                 {translations.currency?.disclaimer ||
@@ -226,7 +222,7 @@ const CurrencyList = () => {
             </div>
             <div>
               <h3 className="main_h3">
-                {translations.currency?.official || "ოფიციალური"}
+                {translations.currency?.official || "ოფიც."}
               </h3>
             </div>
             <div>
@@ -259,7 +255,7 @@ const CurrencyList = () => {
                         <span>{currency.rate}</span>
                         <span className="my-auto px-3">
                           <Image
-                            src={currency.diff < 0 ? down : up}
+                            src={currency.diff < 0 ? icons.down : icons.up}
                             alt="up/down"
                           />
                         </span>

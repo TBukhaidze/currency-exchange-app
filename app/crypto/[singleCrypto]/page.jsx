@@ -6,8 +6,7 @@ import Image from "next/image";
 import { LanguageContext } from "../../context/LanguageContext";
 import CryptoChart from "../../components/CryptoChar";
 import { fetchSingleCryptoDetails } from "@/app/features/api/getSingleCrypto";
-import up from "../../../public/icons/up.svg";
-import down from "../../../public/icons/down.svg";
+import { icons } from "@/app/features/constants/icons";
 
 const SingleCrypto = () => {
   const { translations } = useContext(LanguageContext);
@@ -68,8 +67,8 @@ const SingleCrypto = () => {
                         <Image
                           src={
                             cryptoData.market_cap_change_percentage_24h > 0
-                              ? up
-                              : down
+                              ? icons.up
+                              : icons.down
                           }
                           alt="change"
                           className="mr-2"

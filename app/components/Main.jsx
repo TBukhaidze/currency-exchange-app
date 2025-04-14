@@ -59,13 +59,13 @@ const Main = () => {
             href="/exchange"
             className="whitespace-nowrap px-3 py-1 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-all hover:-translate-y-1 hover:shadow-lg text-xs md:text-sm"
           >
-            {translations.main?.exchange_rates || "ვალუტის კურსები"}
+            {translations.main?.exchange_rates || "ვალუტა"}
           </Link>
           <Link
             href="/crypto"
             className="whitespace-nowrap px-3 py-1 md:px-4 md:py-2 lg:px-6 lg:py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-bold rounded-full transition-all hover:-translate-y-1 hover:shadow-lg text-xs md:text-sm"
           >
-            {translations.main?.crypto_rates || "კრიპტოვალუტის კურსები"}
+            {translations.main?.crypto_rates || "კრიპტოვალურტა"}
           </Link>
           <Link
             href="/contact"

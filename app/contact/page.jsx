@@ -4,12 +4,7 @@ import Link from "next/link";
 import everest from "../../public/img/everest.jpg";
 import temo from "../../public/img/temo.jpg";
 
-import fb from "../../public/icons/fb.svg";
-import linkedIn from "../../public/icons/linkedIn.svg";
-import gitHub from "../../public/icons/gitHub.svg";
-import telegram from "../../public/icons/telegram.svg";
-import gmail from "../../public/icons/gmail.svg";
-import phone from "../../public/icons/phone.svg";
+import { icons } from "../features/constants/icons";
 
 const ContactPage = () => {
   return (
@@ -47,12 +42,12 @@ const ContactPage = () => {
                   href="https://www.facebook.com/buxa.buxa.7/"
                   target="_blank"
                 >
-                  <Image src={fb} alt="Facebook icon" />
+                  <Image src={icons.fb} alt="Facebook icon" />
                 </Link>
               </li>
               <li className="contacts_svg">
                 <Link href="https://github.com/TBukhaidze" target="_blank">
-                  <Image src={gitHub} alt="GitHub icon" />
+                  <Image src={icons.gitHub} alt="GitHub icon" />
                 </Link>
               </li>
               <li className="contacts_svg">
@@ -60,12 +55,12 @@ const ContactPage = () => {
                   href="https://www.linkedin.com/in/temuri-bukhaidze-83728633a/"
                   target="_blank"
                 >
-                  <Image src={linkedIn} alt="LinkedIn icon" />
+                  <Image src={icons.linkedIn} alt="LinkedIn icon" />
                 </Link>
               </li>
               <li className="contacts_svg">
                 <Link href="https://t.me/temobu" target="_blank">
-                  <Image src={telegram} alt="Telegram icon" />
+                  <Image src={icons.telegram} alt="Telegram icon" />
                 </Link>
               </li>
             </ul>
@@ -75,11 +70,11 @@ const ContactPage = () => {
               href="mailto:temo@gmail.com"
               className="flex justify-center mb-3"
             >
-              <Image src={gmail} alt="Gmail icon" />
+              <Image src={icons.gmail} alt="Gmail icon" />
               <p className="my-auto  text-gray-600">Bukhaidze.temo@gmail.com</p>
             </Link>
             <Link href="tel:+995596211222" className="flex justify-center mb-3">
-              <Image src={phone} alt="Phone icon" />
+              <Image src={icons.phone} alt="Phone icon" />
               <p className="my-auto  text-gray-600">Tel:596 211 222</p>
             </Link>
           </div>

@@ -8,8 +8,8 @@ import { LanguageContext } from "../context/LanguageContext";
 import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 
-import up from "../../public/icons/up.svg";
-import down from "../../public/icons/down.svg";
+import { icons } from "../features/constants/icons";
+
 import Spinner from "./spinner";
 
 export default function CryptoList() {
@@ -99,7 +99,8 @@ export default function CryptoList() {
         </div>
         {coins.length ? (
           coins.map((coin) => {
-            const icon = coin.market_cap_change_percentage_24h < 0 ? down : up;
+            const icon =
+              coin.market_cap_change_percentage_24h < 0 ? icons.down : icons.up;
             const changeText =
               coin.market_cap_change_percentage_24h.toFixed(2) + "%";
 

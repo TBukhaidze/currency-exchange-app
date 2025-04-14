@@ -1,13 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import diamond from "../../public/icons/diamond.svg";
-import user from "../../public/icons/user.svg";
-import menuIcon from "../../public/icons/menu.svg";
-import closeIcon from "../../public/icons/close.svg";
-import Link from "next/link";
 import { useContext, useState } from "react";
 import { LanguageContext } from "../context/LanguageContext";
+import Link from "next/link";
+
+import { icons } from "../features/constants/icons";
 
 const Navbar = () => {
   const { language, toggleLanguage, translations } =
@@ -24,7 +22,7 @@ const Navbar = () => {
         <div className="txt_orange flex-shrink-0">
           <Link href="/" className="flex items-center gap-1">
             Diamond
-            <Image src={diamond} alt="diamond" width={24} height={24} />
+            <Image src={icons.diamond} alt="diamond" width={24} height={24} />
           </Link>
         </div>
 
@@ -55,7 +53,7 @@ const Navbar = () => {
               onClick={toggleLanguage}
               className="flex justify-center items-center w-full text-white text-sm gap-3 px-5"
             >
-              <Image src={user} alt="user" width={20} height={20} />
+              <Image src={icons.user} alt="user" width={20} height={20} />
               {language === "en" ? "GE" : "EN"}
             </button>
           </div>
@@ -65,7 +63,7 @@ const Navbar = () => {
             onClick={toggleMenu}
           >
             <Image
-              src={isMenuOpen ? closeIcon : menuIcon}
+              src={isMenuOpen ? icons.close : icons.menu}
               alt={isMenuOpen ? "Close menu" : "Open menu"}
               width={24}
               height={24}
