@@ -8,6 +8,8 @@ import fb from "../../public/icons/fb.svg";
 import linkedIn from "../../public/icons/linkedIn.svg";
 import gitHub from "../../public/icons/gitHub.svg";
 import telegram from "../../public/icons/telegram.svg";
+import gmail from "../../public/icons/gmail.svg";
+import phone from "../../public/icons/phone.svg";
 
 const ContactPage = () => {
   return (
@@ -38,8 +40,8 @@ const ContactPage = () => {
             <p className="text-gray-500">React/Next.js</p>
           </div>
           <div className="p-4 border-t mx-8 mt-2">
-            <p className="text-center text-gray-600">Contacts</p>
-            <ul className="flex justify-center items-center flex-wrap gap-5 mt-4">
+            <p className="text-center text-gray-600">Social Media Platforms</p>
+            <ul className="flex justify-center items-center flex-wrap gap-5 my-4">
               <li className="contacts_svg">
                 <Link
                   href="https://www.facebook.com/buxa.buxa.7/"
@@ -67,6 +69,19 @@ const ContactPage = () => {
                 </Link>
               </li>
             </ul>
+            <div className="p-4 border-t mx-8" />
+            <p className="text-center text-gray-600">Contacts</p>
+            <Link
+              href="mailto:temo@gmail.com"
+              className="flex justify-center mb-3"
+            >
+              <Image src={gmail} alt="Gmail icon" />
+              <p className="my-auto  text-gray-600">Bukhaidze.temo@gmail.com</p>
+            </Link>
+            <Link href="tel:+995596211222" className="flex justify-center mb-3">
+              <Image src={phone} alt="Phone icon" />
+              <p className="my-auto  text-gray-600">Tel:596 211 222</p>
+            </Link>
           </div>
         </div>
       </div>
