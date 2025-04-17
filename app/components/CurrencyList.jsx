@@ -44,6 +44,7 @@ const CurrencyList = () => {
       try {
         const result = await fetchCurrencyPrice(date);
         setData(result);
+        console.log(result);
       } catch (err) {
         setError(err.message);
       } finally {

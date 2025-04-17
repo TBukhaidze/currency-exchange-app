@@ -9,11 +9,13 @@ import arm from "../../../public/icons/arm.svg";
 import isr from "../../../public/icons/isr.svg";
 import pol from "../../../public/icons/pol.svg";
 import uae from "../../../public/icons/uae.svg";
+import cn from "../../../public/icons/CN.svg";
 
 export const currencyFlags = {
   USD: usa,
   EUR: eur,
   RUB: rus,
+  CNY: cn,
   TRY: tr,
   GBP: uk,
   AED: uae,
