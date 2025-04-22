@@ -23,6 +23,19 @@ const CurrencyList = () => {
   const [amount, setAmount] = useState("");
   const [convertedAmount, setConvertedAmount] = useState("");
 
+  const getCurrencyDisplayName = (currencyCode, currencyName = "") => {
+    if (translations.currencyName?.[currencyCode]) {
+      return translations.currencyName[currencyCode];
+    }
+
+    if (currencyName) {
+      const words = currencyName.trim().split(" ");
+      return words[words.length - 1];
+    }
+
+    return currencyCode;
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTime(`${getCurrentTime()}`);
@@ -86,11 +99,6 @@ const CurrencyList = () => {
 
   const exchangeRate = (selectedRate1 / selectedRate2).toFixed(4);
 
-  const getLastWord = (name) => {
-    const words = name.trim().split(" ");
-    return words[words.length - 1];
-  };
-
   return (
     <div className="lg:w-8/12 md:w-11/12 w-full mx-auto pt-8 flex flex-col lg:flex-row">
       <div className="main_white main_exch w-full lg:w-2/5 lg:ml-6 h-auto self-start order-1 lg:order-2 mb-10 lg:mb-0">
@@ -114,13 +122,14 @@ const CurrencyList = () => {
               value={selectedCurrency1}
               onChange={(e) => setSelectedCurrency1(e.target.value)}
             >
-              <option value="GEL">1 ლარი</option>
+              <option value="GEL">1 {getCurrencyDisplayName("GEL")}</option>
               {data &&
                 getFilteredCurrencies(data[0]?.currencies || []).map(
                   (currency) =>
                     currency.code !== "GEL" ? (
                       <option key={currency.code} value={currency.code}>
-                        {currency.quantity} {getLastWord(currency.name)}
+                        {currency.quantity}{" "}
+                        {getCurrencyDisplayName(currency.code, currency.name)}
                       </option>
                     ) : null
                 )}
@@ -157,14 +166,15 @@ const CurrencyList = () => {
               value={selectedCurrency2}
               onChange={(e) => setSelectedCurrency2(e.target.value)}
             >
-              <option value="USD">1 დოლარი</option>
-              <option value="GEL">1 ლარი</option>
+              <option value="USD">1 {getCurrencyDisplayName("USD")}</option>
+              <option value="GEL">1 {getCurrencyDisplayName("GEL")}</option>
               {data &&
                 getFilteredCurrencies(data[0]?.currencies || []).map(
                   (currency) =>
                     currency.code !== "USD" && currency.code !== "GEL" ? (
                       <option key={currency.code} value={currency.code}>
-                        {currency.quantity} {getLastWord(currency.name)}
+                        {currency.quantity}{" "}
+                        {getCurrencyDisplayName(currency.code, currency.name)}
                       </option>
                     ) : null
                 )}
@@ -196,6 +206,7 @@ const CurrencyList = () => {
           </div>
         )}
         {error && <p className="text-red-500 mt-2">Error: {error}</p>}
+
         <div className="flex justify-between mb-10 flex-wrap">
           <h2 className="main_h2">
             {translations.currency?.rates_title || "ვალუტის კურსები"}
@@ -247,7 +258,11 @@ const CurrencyList = () => {
                             alt={`${currency.code} flag`}
                           />
                           <p className="my-auto">
-                            {currency.quantity} {getLastWord(currency.name)}
+                            {currency.quantity}{" "}
+                            {getCurrencyDisplayName(
+                              currency.code,
+                              currency.name
+                            )}
                           </p>
                         </div>
                       </div>

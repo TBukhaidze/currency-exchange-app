@@ -51,6 +51,22 @@
     "disclaimer": "Please note that exchange rates may vary by branch. For more information, please contact your preferred branch."
   },
 
+  "currencyName": {
+    "GEL": "Lari",
+    "USD": "Dollar",
+    "EUR": "Euro",
+    "RUB": "Ruble",
+    "CNY": "Yuan",
+    "TRY": "Lira",
+    "GBP": "Sterling",
+    "AED": "Dirham",
+    "CHF": "Franc",
+    "AZR": "Manat",
+    "ARM": "Dram",
+    "ISR": "Shekel",
+    "POL": "Zloty"
+  },
+
   "crypto": {
     "rates_title": "Cryptocurrency Rates",
     "refresh_info": "Data will refresh in {seconds} seconds",
