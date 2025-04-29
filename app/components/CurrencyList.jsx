@@ -23,24 +23,69 @@ const CurrencyList = () => {
   const [amount, setAmount] = useState("");
   const [convertedAmount, setConvertedAmount] = useState("");
 
-  const getCurrencyDisplayName = (currencyCode, currencyName = "") => {
-    if (translations.currencyName?.[currencyCode]) {
-      return translations.currencyName[currencyCode];
-    }
+  const getCurrencyDisplayName = (code, name = "") =>
+    translations.currencyName?.[code] || name?.trim().split(" ").pop() || code;
 
-    if (currencyName) {
-      const words = currencyName.trim().split(" ");
-      return words[words.length - 1];
-    }
+  const findRate = (code) =>
+    data?.[0]?.currencies?.find((c) => c.code === code)?.rate || 1;
 
-    return currencyCode;
-  };
+  const getQuantity = (code) =>
+    data?.[0]?.currencies?.find((c) => c.code === code)?.quantity || 1;
+
+  const getFilteredCurrencies = (currencies) =>
+    currencies
+      .filter((c) => targetCurrencies.includes(c.code))
+      .sort(
+        (a, b) =>
+          targetCurrencies.indexOf(a.code) - targetCurrencies.indexOf(b.code)
+      );
+
+  const renderCurrencyOptions = (excludeCodes = []) =>
+    getFilteredCurrencies(data?.[0]?.currencies || []).map((currency) =>
+      excludeCodes.includes(currency.code) ? null : (
+        <option key={currency.code} value={currency.code}>
+          {currency.quantity}{" "}
+          {getCurrencyDisplayName(currency.code, currency.name)}
+        </option>
+      )
+    );
+
+  const renderCurrencyRow = (currency) => (
+    <React.Fragment key={currency.code}>
+      <div className="text-left col-span-2">
+        <div className="flex gap-8 main_prices">
+          <Image
+            src={currencyFlags[currency.code]}
+            alt={`${currency.code} flag`}
+          />
+          <p className="my-auto">
+            {currency.quantity}{" "}
+            {getCurrencyDisplayName(currency.code, currency.name)}
+          </p>
+        </div>
+      </div>
+      <div className="flex text-left my-auto main_prices">
+        <span>{currency.rate}</span>
+        <span className="my-auto px-3">
+          <Image
+            src={currency.diff < 0 ? icons.down : icons.up}
+            alt="up/down"
+          />
+        </span>
+      </div>
+      <div className="my-auto main_prices">
+        {(currency.rate * 0.99).toFixed(4)}
+      </div>
+      <div className="my-auto main_prices">
+        {(currency.rate * 1.01).toFixed(4)}
+      </div>
+    </React.Fragment>
+  );
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTime(`${getCurrentTime()}`);
+      setCurrentTime(getCurrentTime());
     }, 1000);
-
     return () => clearInterval(interval);
   }, []);
 
@@ -53,7 +98,6 @@ const CurrencyList = () => {
     const fetchRates = async () => {
       setLoading(true);
       setError(null);
-
       try {
         const result = await fetchCurrencyPrice(date);
         setData(result);
@@ -63,17 +107,12 @@ const CurrencyList = () => {
         setLoading(false);
       }
     };
-
     fetchRates();
   }, [date]);
 
   useEffect(() => {
-    const rate1 =
-      data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)?.rate ||
-      1;
-    const rate2 =
-      data?.[0]?.currencies?.find((c) => c.code === selectedCurrency2)?.rate ||
-      1;
+    const rate1 = findRate(selectedCurrency1);
+    const rate2 = findRate(selectedCurrency2);
 
     if (!isNaN(parseFloat(amount)) && isFinite(amount)) {
       const result = (parseFloat(amount) * (rate1 / rate2)).toFixed(4);
@@ -83,21 +122,9 @@ const CurrencyList = () => {
     }
   }, [amount, selectedCurrency1, selectedCurrency2, data]);
 
-  const getFilteredCurrencies = (currencies) => {
-    return currencies
-      .filter((currency) => targetCurrencies.includes(currency.code))
-      .sort(
-        (a, b) =>
-          targetCurrencies.indexOf(a.code) - targetCurrencies.indexOf(b.code)
-      );
-  };
-
-  const selectedRate1 =
-    data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)?.rate || 1;
-  const selectedRate2 =
-    data?.[0]?.currencies?.find((c) => c.code === selectedCurrency2)?.rate || 1;
-
-  const exchangeRate = (selectedRate1 / selectedRate2).toFixed(4);
+  const exchangeRate = (
+    findRate(selectedCurrency1) / findRate(selectedCurrency2)
+  ).toFixed(4);
 
   return (
     <div className="lg:w-8/12 md:w-11/12 w-full mx-auto pt-8 flex flex-col lg:flex-row">
@@ -123,16 +150,7 @@ const CurrencyList = () => {
               onChange={(e) => setSelectedCurrency1(e.target.value)}
             >
               <option value="GEL">1 {getCurrencyDisplayName("GEL")}</option>
-              {data &&
-                getFilteredCurrencies(data[0]?.currencies || []).map(
-                  (currency) =>
-                    currency.code !== "GEL" ? (
-                      <option key={currency.code} value={currency.code}>
-                        {currency.quantity}{" "}
-                        {getCurrencyDisplayName(currency.code, currency.name)}
-                      </option>
-                    ) : null
-                )}
+              {renderCurrencyOptions(["GEL"])}
             </select>
           </div>
         </div>
@@ -168,24 +186,15 @@ const CurrencyList = () => {
             >
               <option value="USD">1 {getCurrencyDisplayName("USD")}</option>
               <option value="GEL">1 {getCurrencyDisplayName("GEL")}</option>
-              {data &&
-                getFilteredCurrencies(data[0]?.currencies || []).map(
-                  (currency) =>
-                    currency.code !== "USD" && currency.code !== "GEL" ? (
-                      <option key={currency.code} value={currency.code}>
-                        {currency.quantity}{" "}
-                        {getCurrencyDisplayName(currency.code, currency.name)}
-                      </option>
-                    ) : null
-                )}
+              {renderCurrencyOptions(["USD", "GEL"])}
             </select>
           </div>
         </div>
+
         <div className="mt-6">
           <span className="calc_span">
-            {data?.[0]?.currencies?.find((c) => c.code === selectedCurrency1)
-              ?.quantity || 1}{" "}
-            {selectedCurrency1} = {exchangeRate} {selectedCurrency2}
+            {getQuantity(selectedCurrency1)} {selectedCurrency1} ={" "}
+            {exchangeRate} {selectedCurrency2}
           </span>
           <div className="flex mt-6">
             <Image src={icons.info} alt="info" />
@@ -217,7 +226,7 @@ const CurrencyList = () => {
             onChange={(e) => setDate(e.target.value)}
             className="border p-2 rounded-md mb-2"
           />
-          {currentTime == "" ? (
+          {!currentTime ? (
             <Spinner />
           ) : (
             <p className="main_time">{currentTime}</p>
@@ -246,46 +255,11 @@ const CurrencyList = () => {
                 {translations.currency?.sell || "გაყიდვა"}
               </h3>
             </div>
-            {data && (
-              <>
-                {getFilteredCurrencies(data[0]?.currencies || []).map(
-                  (currency) => (
-                    <React.Fragment key={currency.code}>
-                      <div className="text-left col-span-2">
-                        <div className="flex gap-8 main_prices">
-                          <Image
-                            src={currencyFlags[currency.code]}
-                            alt={`${currency.code} flag`}
-                          />
-                          <p className="my-auto">
-                            {currency.quantity}{" "}
-                            {getCurrencyDisplayName(
-                              currency.code,
-                              currency.name
-                            )}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex text-left my-auto main_prices">
-                        <span>{currency.rate}</span>
-                        <span className="my-auto px-3">
-                          <Image
-                            src={currency.diff < 0 ? icons.down : icons.up}
-                            alt="up/down"
-                          />
-                        </span>
-                      </div>
-                      <div className="my-auto main_prices">
-                        {(currency.rate * 0.99).toFixed(4)}
-                      </div>
-                      <div className="my-auto main_prices">
-                        {(currency.rate * 1.01).toFixed(4)}
-                      </div>
-                    </React.Fragment>
-                  )
-                )}
-              </>
-            )}
+
+            {data &&
+              getFilteredCurrencies(data[0]?.currencies || []).map(
+                renderCurrencyRow
+              )}
           </div>
         </div>
       </div>

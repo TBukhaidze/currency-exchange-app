@@ -61,10 +61,10 @@
     "GBP": "Sterling",
     "AED": "Dirham",
     "CHF": "Franc",
-    "AZR": "Manat",
-    "ARM": "Dram",
-    "ISR": "Shekel",
-    "POL": "Zloty"
+    "AZN": "Manat",
+    "AMD": "Dram",
+    "ILS": "Shekel",
+    "PLN": "Zloty"
   },
 
   "crypto": {
