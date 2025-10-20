@@ -5,8 +5,8 @@ import { useParams } from "next/navigation";
 import Image from "next/image";
 import { LanguageContext } from "../../context/LanguageContext";
 import CryptoChart from "../../components/CryptoChar";
-import { fetchSingleCryptoDetails } from "@/app/features/api/getSingleCrypto";
-import { icons } from "@/app/features/constants/icons";
+import { fetchSingleCryptoDetails } from "../../features/api/getSingleCrypto";
+import { icons } from "../../features/constants/icons";
 
 const SingleCrypto = () => {
   const { translations } = useContext(LanguageContext);

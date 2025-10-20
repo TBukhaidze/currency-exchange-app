@@ -11,7 +11,7 @@ import pol from "../../../public/icons/pol.svg";
 import uae from "../../../public/icons/uae.svg";
 import cn from "../../../public/icons/cn.svg";
 
-export const currencyFlags = {
+export const currencyFlags: Record<string, string> = {
   USD: usa,
   EUR: eur,
   RUB: rus,

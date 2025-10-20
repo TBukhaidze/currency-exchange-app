@@ -11,4 +11,4 @@ export const targetCurrencies = [
   "AMD",
   "ILS",
   "PLN",
-];
+] as const;

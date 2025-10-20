@@ -1,4 +1,4 @@
-import MainExchange from "../components/MainExcahnge";
+import MainExchange from "../components/MainExchange";
 
 const ExchangePage = () => {
   return (

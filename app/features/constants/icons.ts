@@ -17,7 +17,7 @@ import user from "../../../public/icons/user.svg";
 import btc from "../../../public/icons/btc.svg";
 import dolar from "../../../public/icons/dolar.svg";
 
-export const icons = {
+export const icons: Record<string, string> = {
   contact: contact,
   close: close,
   diamond: diamond,
