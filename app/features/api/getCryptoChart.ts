@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const fetchCryptoChart = async (coinId, days = 365) => {
+export const fetchCryptoChart = async (coinId:number, days:number = 365) => {
   try {
     const response = await axios.get(
       `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart`,
