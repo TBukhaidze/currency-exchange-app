@@ -71,11 +71,11 @@ const ContactPage = () => {
               className="flex justify-center mb-3"
             >
               <Image src={icons.gmail} alt="Gmail icon" />
-              <p className="my-auto  text-gray-600">Bukhaidze.temo@gmail.com</p>
+              <p className="my-auto  text-gray-600 ml-1">Bukhaidze.temo@gmail.com</p>
             </Link>
             <Link href="tel:+995596211222" className="flex justify-center mb-3">
               <Image src={icons.phone} alt="Phone icon" />
-              <p className="my-auto  text-gray-600">Tel:596 211 222</p>
+              <p className="my-auto  text-gray-600 ml-1">Tel:596 211 222</p>
             </Link>
           </div>
         </div>
