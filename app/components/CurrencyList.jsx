@@ -9,7 +9,7 @@ import { currencyFlags } from "../features/constants/currencyFlags";
 import { targetCurrencies } from "../features/constants/targetCurrencies";
 import { icons } from "../features/constants/icons";
 
-import Spinner from "./spinner";
+import Spinner from "./Spinner";
 
 const CurrencyList = () => {
   const { translations } = useContext(LanguageContext);
