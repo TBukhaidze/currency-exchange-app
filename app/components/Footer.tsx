@@ -5,8 +5,24 @@ import { LanguageContext } from "../context/LanguageContext";
 
 const year = new Date().getFullYear();
 
+interface IFooterTranslations {
+  about?: string;
+  calculator?: string;
+  exchange?: string;
+  crypto?: string;
+  contact?: string;
+  team?: string;
+  copyright?: string;
+}
+
+interface ITranslations {
+  footer?: IFooterTranslations;
+}
+
 const Footer = () => {
-  const { translations } = useContext(LanguageContext);
+  const { translations } = useContext(LanguageContext) as {
+    translations: ITranslations;
+  };
 
   const footerLinks = [
     { href: "/", text: translations.footer?.about || "About" },
