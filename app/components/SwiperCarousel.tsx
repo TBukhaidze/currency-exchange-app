@@ -12,10 +12,34 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-const SwiperCarousel = () => {
-  const { translations } = useContext(LanguageContext);
+interface Slide {
+  image: string;
+  title: string;
+  link: string;
+  button: string;
+}
 
-  const slides = [
+interface ICarouselTranslations {
+  currency_title?: string;
+  currency_button?: string;
+  gas_title?: string;
+  gas_button?: string;
+  crypto_title?: string;
+  crypto_button?: string;
+  bitcoin_title?: string;
+  bitcoin_button?: string;
+}
+
+interface ITranslations {
+  carousel?: ICarouselTranslations;
+}
+
+const SwiperCarousel = () => {
+  const { translations } = useContext(LanguageContext) as {
+    translations: ITranslations;
+  };
+
+  const slides: Slide[] = [
     {
       image: "/img/money.jpg",
       title: translations.carousel?.currency_title || "ვალუტის საუკეთესო კურსი",
