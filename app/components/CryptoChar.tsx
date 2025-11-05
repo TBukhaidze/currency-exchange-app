@@ -11,9 +11,18 @@ import {
 } from "recharts";
 import { fetchCryptoChart } from "../features/api/getCryptoChart";
 
-const CryptoChart = ({ coinId }) => {
-  const [chartData, setChartData] = useState([]);
-  const [chartHeight, setChartHeight] = useState(300);
+interface ICryptoPrice {
+  date: string;
+  price: number;
+}
+
+interface CryptoChartProps {
+  coinId: number;
+}
+
+const CryptoChart: React.FC<CryptoChartProps> = ({ coinId }) => {
+  const [chartData, setChartData] = useState<ICryptoPrice[]>([]);
+  const [chartHeight, setChartHeight] = useState<number>(300);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -31,7 +40,7 @@ const CryptoChart = ({ coinId }) => {
     const getData = async () => {
       const prices = await fetchCryptoChart(coinId);
       setChartData(
-        prices.map(([timestamp, price]) => ({
+        prices.map(([timestamp, price]: [number, number]) => ({
           date: new Date(timestamp).toLocaleDateString(),
           price,
         }))
@@ -62,7 +71,7 @@ const CryptoChart = ({ coinId }) => {
           stroke="#8884d8"
           strokeWidth={3}
           fill="url(#colorPrice)"
-          isAnimationActive={true}
+          isAnimationActive
           animationDuration={1500}
         />
       </AreaChart>
