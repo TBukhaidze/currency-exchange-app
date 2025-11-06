@@ -7,10 +7,27 @@ import Link from "next/link";
 
 import { icons } from "../features/constants/icons";
 
+interface INavbarTranslations {
+  home?: string;
+  currency?: string;
+  crypto?: string;
+  contact?: string;
+}
+
+interface ITranslations {
+  navbar?: INavbarTranslations;
+}
+
 const Navbar = () => {
-  const { language, toggleLanguage, translations } =
-    useContext(LanguageContext);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, toggleLanguage, translations } = useContext(
+    LanguageContext
+  ) as {
+    language: string;
+    toggleLanguage: () => void;
+    translations: ITranslations;
+  };
+
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
