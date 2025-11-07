@@ -6,8 +6,26 @@ import { useContext } from "react";
 import { LanguageContext } from "../context/LanguageContext";
 import team from "../../public/img/team.png";
 
+interface IMainTranslations {
+  site_goal?: string;
+  market_problem?: string;
+  highlighted_problem?: string;
+  problem_description?: string;
+  site_purpose?: string;
+  site_purpose_description?: string;
+  exchange_rates?: string;
+  crypto_rates?: string;
+  contact?: string;
+}
+
+interface ITranslations {
+  main?: IMainTranslations;
+}
+
 const Main = () => {
-  const { translations } = useContext(LanguageContext);
+  const { translations } = useContext(LanguageContext) as {
+    translations: ITranslations;
+  };
 
   return (
     <div className="main py-4 md:py-8">
