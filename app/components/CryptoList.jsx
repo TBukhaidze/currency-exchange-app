@@ -102,7 +102,9 @@ export default function CryptoList() {
             const icon =
               coin.market_cap_change_percentage_24h < 0 ? icons.down : icons.up;
             const changeText =
-              coin.market_cap_change_percentage_24h.toFixed(2) + "%";
+              coin.market_cap_change_percentage_24h != null
+                ? coin.market_cap_change_percentage_24h.toFixed(2) + "%"
+                : "N/A";
 
             return (
               <Link key={coin.id} href={`/crypto/${coin.id.toLowerCase()}`}>

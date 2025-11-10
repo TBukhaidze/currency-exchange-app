@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "app/features/api/cryptoApi.js", "app/features/api/currencyApi.js", "app/components/Footer.tsx"  ],
+, "app/features/api/cryptoApi.js", "app/features/api/currencyApi.js", "app/components/Footer.tsx", "app/crypto/[singleCrypto]/page.jsx"  ],
   "exclude": [
     "node_modules"
   ]
