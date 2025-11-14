@@ -8,11 +8,32 @@ import CryptoChart from "../../components/CryptoChar";
 import { fetchSingleCryptoDetails } from "../../features/api/getSingleCrypto";
 import { icons } from "../../features/constants/icons";
 
+interface ICryptoDetailTranslations {
+  current_price: string;
+  price_change_24h: string;
+  market_cap: string;
+  volume_24h: string;
+  ath: string;
+  circulating_supply: string;
+  total_supply: string;
+  max_supply: string;
+  price_range_24h: string;
+  chart: string;
+  last_year: string;
+}
+
+interface ITranslations {
+  cryptoDetail?: ICryptoDetailTranslations;
+}
+
 const SingleCrypto = () => {
-  const { translations } = useContext(LanguageContext);
+  const { translations } = useContext(LanguageContext) as {
+    translations: ITranslations;
+  };
+
   const [cryptoData, setCryptoData] = useState(null);
   const params = useParams();
-  const coinId = params.singleCrypto;
+  const coinId = params.singleCrypto as string;
 
   useEffect(() => {
     if (!coinId) return;
@@ -24,7 +45,7 @@ const SingleCrypto = () => {
   }, [coinId]);
 
   const formatNumberIntl = useCallback(
-    (number) => new Intl.NumberFormat("en-US").format(number),
+    (number: number) => new Intl.NumberFormat("en-US").format(number),
     []
   );
 

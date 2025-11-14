@@ -17,7 +17,7 @@ interface ICryptoPrice {
 }
 
 interface CryptoChartProps {
-  coinId: number;
+  coinId: string;
 }
 
 const CryptoChart: React.FC<CryptoChartProps> = ({ coinId }) => {
