@@ -9,22 +9,49 @@ import { fetchCryptoPrices } from "../features/api/cryptoApi";
 import { getCurrentTime } from "../utils/getCurrentTime";
 
 import { icons } from "../features/constants/icons";
-
 import Spinner from "./Spinner";
 
-export default function CryptoList() {
-  const { translations } = useContext(LanguageContext);
-  const [coins, setCoins] = useState([]);
-  const [currentTime, setCurrentTime] = useState("");
-  const [secondsLeft, setSecondsLeft] = useState(60);
+interface ICoin {
+  id: string;
+  name: string;
+  symbol: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  market_cap_change_percentage_24h: number | null;
+}
 
+interface ICryptoTranslations {
+  rates_title?: string;
+  currency?: string;
+  price?: string;
+  market_cap?: string;
+  refresh_info?: string;
+}
+
+interface ITranslations {
+  crypto?: ICryptoTranslations;
+}
+
+export default function CryptoList() {
+  const { translations } = useContext(LanguageContext) as {
+    translations: ITranslations;
+  };
+
+  const [coins, setCoins] = useState<ICoin[]>([]);
+  const [currentTime, setCurrentTime] = useState<string>("");
+  const [secondsLeft, setSecondsLeft] = useState<number>(60);
+
+  /* --- TIME --- */
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentTime(`${getCurrentTime()}`);
+      setCurrentTime(getCurrentTime());
     }, 1000);
     return () => clearInterval(interval);
   }, []);
 
+  /* --- FETCH COINS --- */
   useEffect(() => {
     const loadData = async () => {
       const data = await fetchCryptoPrices();
@@ -41,6 +68,7 @@ export default function CryptoList() {
     return () => clearInterval(refreshInterval);
   }, []);
 
+  /* --- COUNTDOWN --- */
   useEffect(() => {
     const countdown = setInterval(() => {
       setSecondsLeft((prev) => (prev > 0 ? prev - 1 : 0));
@@ -49,8 +77,9 @@ export default function CryptoList() {
     return () => clearInterval(countdown);
   }, []);
 
+  /* --- FORMAT --- */
   const formatNumberIntl = useCallback(
-    (number) => new Intl.NumberFormat("en-US").format(number),
+    (num: number) => new Intl.NumberFormat("en-US").format(num),
     []
   );
 
@@ -61,20 +90,22 @@ export default function CryptoList() {
           <h2 className="main_h2">
             {translations.crypto?.rates_title || "კრიპტოვალუტის კურსები"}
           </h2>
+
           {currentTime === "" ? (
             <Spinner />
           ) : (
             <>
               <p className="main_time">
-                {translations.crypto?.refresh_info?.replace(
-                  "{seconds}",
-                  secondsLeft
-                ) || `ინფორმაცია განახლდება ${secondsLeft} წამში`}
+                {(
+                  translations.crypto?.refresh_info ||
+                  "ინფორმაცია განახლდება {seconds} წამში"
+                ).replace("{seconds}", String(secondsLeft))}
               </p>
               <p className="main_time pr-7">{currentTime}</p>
             </>
           )}
         </div>
+
         <div className="flex justify-between text-center pb-5">
           <div className="w-full grid grid-cols-3 sm:grid-cols-5 gap-8">
             <div className="text-left col-span-2">
@@ -97,10 +128,14 @@ export default function CryptoList() {
             </div>
           </div>
         </div>
+
         {coins.length ? (
           coins.map((coin) => {
             const icon =
-              coin.market_cap_change_percentage_24h < 0 ? icons.down : icons.up;
+              (coin.market_cap_change_percentage_24h ?? 0) < 0
+                ? icons.down
+                : icons.up;
+
             const changeText =
               coin.market_cap_change_percentage_24h != null
                 ? coin.market_cap_change_percentage_24h.toFixed(2) + "%"
@@ -116,23 +151,26 @@ export default function CryptoList() {
                         <Image
                           src={coin.image}
                           alt={coin.name}
-                          width="24"
-                          height="24"
+                          width={24}
+                          height={24}
                         />
                         <p className="my-auto">
                           {coin.name} ({coin.symbol.toUpperCase()})
                         </p>
                       </div>
                     </div>
+
                     <div className="flex justify-center my-auto main_prices">
                       <span>${formatNumberIntl(coin.current_price)}</span>
                     </div>
+
                     <div className="hidden sm:flex my-auto main_prices justify-center">
                       <span className="my-auto px-2">
                         <Image src={icon} alt="change" />
                       </span>
                       {changeText}
                     </div>
+
                     <div className="hidden sm:block main_prices overflow-hidden truncate whitespace-nowrap">
                       ${formatNumberIntl(coin.market_cap)}
                     </div>
